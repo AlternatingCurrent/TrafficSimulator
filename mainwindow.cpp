@@ -12,3 +12,23 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_btnWeather_clicked()
+{
+
+}
+
+void MainWindow::on_btnAddVehicle_clicked()
+{
+
+}
+
+void MainWindow::on_btnStart_clicked()
+{
+
+}
+
+void MainWindow::on_btnStop_clicked()
+{
+
+}
