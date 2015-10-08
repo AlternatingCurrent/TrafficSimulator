@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void beginSimulation();
 
 private slots:
 
@@ -24,6 +25,8 @@ private slots:
     void on_btnStart_clicked();
 
     void on_btnStop_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

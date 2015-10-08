@@ -26,3 +26,9 @@ HEADERS  += mainwindow.h \
     subject.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    images.qrc
+

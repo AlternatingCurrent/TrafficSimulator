@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QtGui>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,4 +32,10 @@ void MainWindow::on_btnStart_clicked()
 void MainWindow::on_btnStop_clicked()
 {
 
+}
+void MainWindow::beginSimulation()
+{
+    QPixmap roadImage(":/Road.jpg");
+    ui->mainDisplay->setScaledContents(true);
+    ui->mainDisplay->setPixmap(roadImage);
 }
