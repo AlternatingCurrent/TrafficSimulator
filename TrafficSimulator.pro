@@ -35,4 +35,12 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
+
 QMAKE_LFLAGS += /INCREMENTAL:NO
+
+DISTFILES +=
+
+RESOURCES += \
+    images.qrc
+
+>>>>>>> origin/master

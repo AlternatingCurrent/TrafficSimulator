@@ -11,10 +11,11 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     //cout << "Hello\n\n";
-   // QApplication a(argc, argv);
-   // MainWindow w;
-    //w.show();
-
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    w.beginSimulation();
+    return a.exec();
     Subject * asubject = new Subject();
 
     Vehicle * aCar = new PoliceCar(asubject);
@@ -25,5 +26,5 @@ int main(int argc, char *argv[])
     cout << "Before set state 100";
             asubject->setState(100);
 
-    //return a.exec();
+
 }
