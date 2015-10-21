@@ -9,7 +9,7 @@ Subject::Subject()
  //vehicles = new List();
 }
 
-Subject::getState(){
+int Subject::getState(){
    return state;
 }
 
