@@ -88,7 +88,7 @@
     <property name="geometry">
      <rect>
       <x>930</x>
-      <y>30</y>
+      <y>40</y>
       <width>188</width>
       <height>22</height>
      </rect>
@@ -101,23 +101,13 @@
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>150</y>
+      <y>130</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Add Vehicle</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>80</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
     </property>
    </widget>
    <widget class="QFontComboBox" name="Weather">
@@ -157,6 +147,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QFontComboBox" name="Agressiveness">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>80</y>
+      <width>188</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentText">
+     <string>Agressiveness</string>
     </property>
    </widget>
   </widget>

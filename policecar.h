@@ -6,7 +6,7 @@
 class PoliceCar : public Vehicle
 {
 public:
-    PoliceCar(Subject *aVehicle);
+    PoliceCar(Subject *aVehicle,int width, int height, double aggression);
     void update();
 //signals:
 

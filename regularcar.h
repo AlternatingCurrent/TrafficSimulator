@@ -6,7 +6,7 @@
 class RegularCar : public Vehicle
 {
 public:
-    RegularCar(Subject *aVehicle);
+    RegularCar(Subject *aVehicle,int width, int height, double aggression);
     //Dont need update() here as it is virtual() just provide implementation
     void update();
 //signals:

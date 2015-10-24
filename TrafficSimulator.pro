@@ -21,7 +21,14 @@ SOURCES += main.cpp\
     dispatcher.cpp \
     contextobject.cpp \
     concreteinterceptor.cpp \
-    loggingapp.cpp
+    loggingapp.cpp \
+    overtakeaggressive.cpp \
+    overtakemediumaggressiveness.cpp \
+    overtakelowaggressiveness.cpp \
+    increasespeedaggressive.cpp \
+    increasespeedmedium.cpp \
+    increasespeedlow.cpp \
+    decreasespeed.cpp
 
 HEADERS  += mainwindow.h \
     vehicle.h \
@@ -31,16 +38,13 @@ HEADERS  += mainwindow.h \
     dispatcher.h \
     contextobject.h \
     concreteinterceptor.h \
-    loggingapp.h
+    loggingapp.h \
+    vehiclestrategy.h
 
 FORMS    += mainwindow.ui
 
-
-QMAKE_LFLAGS += /INCREMENTAL:NO
 
 DISTFILES +=
 
 RESOURCES += \
     images.qrc
-
->>>>>>> origin/master

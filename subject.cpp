@@ -15,6 +15,10 @@ int Subject::getState(){
 
 void Subject::setState(int state){
     this->state = state;
+    //Case for the state mayve
+    //1 to begin
+    //2 pedestrian crossing
+    //3 traffic lights
     notifyAllVehicles();
 }
 

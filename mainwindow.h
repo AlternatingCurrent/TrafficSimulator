@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "subject.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,8 +29,12 @@ private slots:
 
 
 
+    void on_addVehicles_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
+
+    Subject * asubject = new Subject();
 };
 
 #endif // MAINWINDOW_H
