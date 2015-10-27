@@ -162,6 +162,19 @@
      <string>Agressiveness</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnAddTrafficLightsPedestrianCrossing">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>170</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Pedestrian Crossing</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

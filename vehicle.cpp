@@ -1,9 +1,10 @@
 #include "vehicle.h"
 #include <string>
 #include <iostream>
+#include <QGraphicsPixmapItem>
 using namespace std;
 
-Vehicle::Vehicle(int width, int height, int aggression)
+Vehicle::Vehicle(int width, int height, int aggression, QGraphicsItem *parent)
 {
     this->width      = width;
     this->height     = height;

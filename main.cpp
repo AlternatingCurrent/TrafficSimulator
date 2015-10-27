@@ -8,7 +8,8 @@
 #include "regularcar.h"
 #include "vehiclestrategy.h"
 #include "increasespeedaggressive.cpp"
-
+#include "simulationframe.h"
+SimulationFrame * sim;
 using namespace std;
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,9 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     w.beginSimulation();
+
+    sim = new SimulationFrame();
+    sim->show();
     return a.exec();
 
 

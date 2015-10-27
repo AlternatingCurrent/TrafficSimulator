@@ -28,7 +28,12 @@ SOURCES += main.cpp\
     increasespeedaggressive.cpp \
     increasespeedmedium.cpp \
     increasespeedlow.cpp \
-    decreasespeed.cpp
+    decreasespeed.cpp \
+    trafficlights.cpp \
+    pedestrian.cpp \
+    simulationframe.cpp \
+    athlete.cpp \
+    pedestrianmaker.cpp
 
 HEADERS  += mainwindow.h \
     vehicle.h \
@@ -39,7 +44,12 @@ HEADERS  += mainwindow.h \
     contextobject.h \
     concreteinterceptor.h \
     loggingapp.h \
-    vehiclestrategy.h
+    vehiclestrategy.h \
+    trafficlights.h \
+    pedestrian.h \
+    simulationframe.h \
+    athlete.h \
+    pedestrianmaker.h
 
 FORMS    += mainwindow.ui
 
@@ -48,3 +58,4 @@ DISTFILES +=
 
 RESOURCES += \
     images.qrc
+CONFIG += c++11

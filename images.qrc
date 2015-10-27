@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>Road.jpg</file>
+        <file>person.png</file>
+        <file>tlGreen.png</file>
+        <file>tlRed.png</file>
+        <file>athlete.png</file>
+        <file>car.png</file>
+        <file>cartrailer.png</file>
     </qresource>
 </RCC>

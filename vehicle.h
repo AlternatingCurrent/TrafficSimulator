@@ -1,16 +1,18 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
-
+#include <QGraphicsPixmapItem>
+#include <QObject>
+#include <QGraphicsPixmapItem>
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
-class Vehicle
-{
+class Vehicle: public QObject, public QGraphicsPixmapItem{
+    Q_OBJECT
 public:
 
 
     //***********METHODS*********************:
 
-    Vehicle(int width, int height, int aggression);
+    Vehicle(int width, int height, int aggression, QGraphicsItem * parent=0);
     virtual ~Vehicle();
     Subject * aVehicle;
 
