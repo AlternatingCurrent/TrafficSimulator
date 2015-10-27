@@ -9,6 +9,7 @@ Vehicle::Vehicle(int width, int height, int aggression, QGraphicsItem *parent)
     this->width      = width;
     this->height     = height;
     this->aggression = aggression;
+    speedLimit = 120;
 
 }
 
@@ -19,15 +20,15 @@ Vehicle::~Vehicle()
 
 bool Vehicle :: decisionSpeedUp(){
 
-
+    return false;
 }
 
 bool Vehicle :: decisionSlowDown(){
-
+    return false;
 }
 
 bool Vehicle :: decisionOverTake(){
-
+    return false;
 }
 
 
