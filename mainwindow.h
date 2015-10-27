@@ -34,7 +34,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    Subject * asubject = new Subject();
+    Subject * asubject;
 };
 
 #endif // MAINWINDOW_H

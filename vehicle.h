@@ -65,7 +65,7 @@ public:
 
     //Add this to the constructor so it can change
     //And thus change the outcome of the simulation
-    int speedLimit = 120;
+    int speedLimit;
 
 
 
