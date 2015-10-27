@@ -12,7 +12,7 @@ athlete::athlete(QGraphicsItem * parent)
     move_timer->start(50);
     maxRange=550;
     distanceTravelled=0;
-
+    speed = 6;
 }
 
 athlete::~athlete()

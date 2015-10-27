@@ -19,7 +19,7 @@ public slots:
 private:
     double maxRange;
     double distanceTravelled;
-    int speed = 5; // this is just for now, this will have to be able to be set in the menu by the user
+    int speed; // this is just for now, this will have to be able to be set in the menu by the user
 
 };
 #endif

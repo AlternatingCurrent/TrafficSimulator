@@ -15,6 +15,7 @@ pedestrian::pedestrian(QGraphicsItem *parent)
     move_timer->start(50);
     maxRange=550;
     distanceTravelled=0;
+    speed = 5;
 }
 
 double pedestrian::getMaxRange()

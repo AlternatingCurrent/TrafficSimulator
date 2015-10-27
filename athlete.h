@@ -15,7 +15,7 @@ public slots:
 private:
     double maxRange;
     double distanceTravelled;
-    int speed = 6; //to be changed for control via window
+    int speed; //to be changed for control via window
 };
 
 #endif // ATHLETE_H
