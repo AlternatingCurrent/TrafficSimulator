@@ -57,3 +57,8 @@ void Vehicle::createDispatcher()
 {
     dis = Dispatcher();
 }
+void Vehicle::setUp()
+{
+
+}
+

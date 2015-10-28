@@ -28,12 +28,12 @@ public:
     virtual void update() = 0;
     //virtual void increaseSpeed(); //Algorithm to inc/dec speed of the currentvehicle be it car, motorbioke etc.
     //virtual void decreaseSpeed();
-
+     QGraphicsRectItem * area;
 
     //general functions of a vehicle
     //reduce code duplication through inheritance
     //if we need any other functionality we can just inmplement it in the subclasses
-
+    virtual void setUp();
     void speedUp();
     void slowDown();
     void overTake();
