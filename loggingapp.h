@@ -15,6 +15,7 @@ public:
     LoggingApp();
     void createInterceptor();
     void updateTextFile();
+    ConcreteInterceptor getInterceptor();
 
 
 private:

@@ -3,6 +3,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include "dispatcher.h"
 #include "contextobject.h"
 
 class Subject; //Forward declare to use pointer of type Subject
@@ -72,6 +73,10 @@ public:
     //And thus change the outcome of the simulation
     int speedLimit;
 
+    //Interceptor vairables and methods
+    Dispatcher dis;
+    ContextObject cObj;
+    void createDispatcher();
 
 
 //signals:

@@ -11,6 +11,11 @@ void LoggingApp::createInterceptor()
     cInterceptor = ConcreteInterceptor(&speed_time_values);
 }
 
+ConcreteInterceptor LoggingApp::getInterceptor()
+{
+    return cInterceptor;
+}
+
 void LoggingApp::updateTextFile()
 {
     std::ofstream loggingFile("logs.txt");

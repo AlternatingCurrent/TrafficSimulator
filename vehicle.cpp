@@ -46,4 +46,14 @@ void Vehicle::slowDown(){
 
 void Vehicle::overTake(){
  //Same as above
+
+    //Interceptor code here, need to log the overtaking
+    //First create the context object with the currect speed
+    cObj = ContextObject(currentSpeed);
+    //Now pass the context object to the dispatcher to be recorded
+    dis.callback(&cObj);
+}
+void Vehicle::createDispatcher()
+{
+    dis = Dispatcher();
 }

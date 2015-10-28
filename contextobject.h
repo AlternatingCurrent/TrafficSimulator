@@ -1,11 +1,11 @@
 #ifndef CONTEXTOBJECT_H
 #define CONTEXTOBJECT_H
-#include "vehicle.h"
 
 
 class ContextObject
 {
 public:
+    ContextObject();
     ContextObject(int s);
     int get_Value();
 

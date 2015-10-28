@@ -1,5 +1,9 @@
 #include "contextobject.h"
 
+ContextObject::ContextObject()
+{
+
+}
 
 ContextObject::ContextObject(int s)
 {
