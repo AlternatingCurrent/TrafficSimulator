@@ -1,17 +1,23 @@
 #ifndef CONCRETEINTERCEPTOR_H
 #define CONCRETEINTERCEPTOR_H
-#include "loggingapp.h"
 #include "contextobject.h"
+#include <time.h>
 #include <vector>
+
+struct loggingInfo {
+    time_t time;
+    int speed;
+};
 
 class ConcreteInterceptor
 {
 public:
-    ConcreteInterceptor(std::vector <loggingInfo > &speed_time_values);
+    ConcreteInterceptor();
+    ConcreteInterceptor(std::vector <loggingInfo > *speed_time_values);
     void event_callback(ContextObject *aContextObj);
 
 private:
-    std::vector <loggingInfo > speed_Values;
+    std::vector <loggingInfo > *speed_Values;
 //signals:
 
 //public slots:

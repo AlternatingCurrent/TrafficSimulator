@@ -5,7 +5,6 @@
 
 class ContextObject
 {
-    friend class vehicle;
 public:
     ContextObject(int s);
     int get_Value();

@@ -2,11 +2,12 @@
 #define LOGGINGAPP_H
 #include <ctime>
 #include <vector>
+#include <iostream>
+#include <fstream>
+#include "concreteinterceptor.h"
+#include "dispatcher.h"
 
-struct loggingInfo {
-    time_t time;
-    int speed;
-};
+
 
 class LoggingApp
 {
@@ -17,6 +18,7 @@ public:
 
 
 private:
+    ConcreteInterceptor cInterceptor;
     std::vector <loggingInfo > speed_time_values;
 
 //signals:

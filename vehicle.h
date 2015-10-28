@@ -3,9 +3,12 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include "contextobject.h"
+
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
 class Vehicle: public QObject, public QGraphicsPixmapItem{
+    friend class ContextObject;
     Q_OBJECT
 public:
 
