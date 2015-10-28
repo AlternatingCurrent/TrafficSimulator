@@ -46,7 +46,7 @@ void trafficlights::cross_road(int pedestrianNo)
     ped->setPos(x()+20,y()+60);
     QLineF ln(QPointF(x(),y()),destination);
     int angle = -1* ln.angle(); //must be made clockwiese *-1
-   // sim->scene->addItem(ped);   j                                     //this need to be fixed undefined refernce?? not sure why
+    sim->scene->addItem(ped);                                      //this need to be fixed undefined refernce?? not sure why
     pedestrianCount+=1;
     }
 
@@ -93,7 +93,7 @@ void trafficlights::traffic_light_timer()
     {
         trafficLightOn = true;
         cross_road(1);
-
+           //here I want to send a signal to every vehicle object in the are i specified informing them that the light is red
     }
     setPixmap(QPixmap(":/tlRed.png"));
     QTimer::singleShot(5000, this, SLOT(traffic_light_concurrency_timer()));

@@ -12,6 +12,7 @@ public:
         int vehicleSpawned; //for logging?
         trafficlights * lights;
         SimulationFrame getInstance();
+        unsigned long WELLRNG512();
 private:
         static SimulationFrame simulation;
 

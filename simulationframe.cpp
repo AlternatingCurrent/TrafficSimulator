@@ -7,9 +7,16 @@
 #include <QPointF>
 #include "qmath.h"
 #include <QTransform>
+#include <functional>
 #include <iostream>
+#include <time.h>
+ #include <chrono>
+#include <QDebug>
+using namespace std;
 SimulationFrame::SimulationFrame()
 {
+
+
     scene = new QGraphicsScene(0,0,0,0);  //sizes are all wrong yet to be decide.....
     setScene(scene);
     QPixmap watermark(":/Road.jpg");
@@ -24,7 +31,11 @@ SimulationFrame::SimulationFrame()
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   //setStyleSheet("border-width: 0px; border-style: solid");
    //setContentsMargins(QMargins());
+
 }
+
+
+
 
 
 
