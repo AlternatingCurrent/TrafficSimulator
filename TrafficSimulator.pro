@@ -33,7 +33,10 @@ SOURCES += main.cpp\
     pedestrian.cpp \
     simulationframe.cpp \
     athlete.cpp \
-    pedestrianmaker.cpp
+    pedestrianmaker.cpp \
+    vehiclefactory.cpp \
+    carwithtrailer.cpp \
+    randomgenerator.cpp
 
 HEADERS  += mainwindow.h \
     vehicle.h \
@@ -49,7 +52,10 @@ HEADERS  += mainwindow.h \
     pedestrian.h \
     simulationframe.h \
     athlete.h \
-    pedestrianmaker.h
+    pedestrianmaker.h \
+    vehiclefactory.h \
+    carwithtrailer.h \
+    randomgenerator.h
 
 FORMS    += mainwindow.ui
 
