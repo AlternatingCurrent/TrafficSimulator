@@ -6,6 +6,28 @@
 #include "dispatcher.h"
 #include "contextobject.h"
 
+//#include "increasespeedaggressive.h";
+//#include "increasespeedlow.h";
+//#include "increasespeedmedium.h";
+//#include "decreasespeed.h";
+//#include "overtakehigh.h";
+//#include "overtakelow.h";
+//#include "overtakemedium.h";
+
+#include <vector>
+
+using namespace std;
+
+//class OvertakeLow;
+//class OvertakeMedium;
+//class OvertakeHigh;
+//class IncreaseSpeedLow;
+//class IncreaseSpeedHigh;
+//class IncreaseSpeedMedium;
+//class DecreaseSpeed;
+
+ //#include "StrategyContext.h";
+
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
 class Vehicle: public QObject, public QGraphicsPixmapItem{
@@ -25,7 +47,7 @@ public:
     //Don't need to be virtual only update as update is part of observer
     //Who dosn't know what type of vehicle until runtime i.e dynamic binding
 
-    virtual void update() = 0;
+    virtual void update(vector <Vehicle*> vehicles) = 0;
     //virtual void increaseSpeed(); //Algorithm to inc/dec speed of the currentvehicle be it car, motorbioke etc.
     //virtual void decreaseSpeed();
      QGraphicsRectItem * area;

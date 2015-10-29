@@ -3,6 +3,27 @@
 
 #include <QMainWindow>
 #include "subject.h"
+#include "QGraphicsScene"
+#include "trafficlights.h"
+#include "pedestrian.h"
+#include "vehicle.h"
+#include <QTimer>
+#include <QPointF>
+#include "qmath.h"
+#include <QTransform>
+#include <functional>
+#include <iostream>
+#include <time.h>
+ #include <chrono>
+#include <QDebug>
+#include <vector>
+#include <QtGui>
+#include <iostream>
+#include <string>
+
+#include "policecar.h"
+#include "regularcar.h"
+#include "subject.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,8 +54,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
     Subject * asubject;
+    trafficlights * lights;
+    QGraphicsScene *scene;
+    std::vector<Vehicle*> vehicles;
 };
 
 #endif // MAINWINDOW_H

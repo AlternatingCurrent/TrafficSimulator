@@ -7,5 +7,7 @@
         <file>athlete.png</file>
         <file>car.png</file>
         <file>cartrailer.png</file>
+        <file>carRedLeft.png</file>
+        <file>carRedRight.png</file>
     </qresource>
 </RCC>

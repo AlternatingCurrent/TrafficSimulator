@@ -1,17 +1,18 @@
-#include "vehiclestrategy.h"
-#include "vehicle.h"
+#include "increasespeedaggressive.h"
 
-class IncreaseSpeedAggressive:public VehicleStrategy{
+IncreaseSpeedAggressive::IncreaseSpeedAggressive()
+{
 
+}
 
-    void decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
+void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
        if(currentVehicle->currentSpeed < currentVehicle->HighAggressiveTopSpeed){
            doOperation(currentVehicle);
        }
     }
 
-    void doOperation(Vehicle * currentVehicle){
+void IncreaseSpeedAggressive::doOperation(Vehicle * currentVehicle){
         currentVehicle->currentSpeed += 10;  //10KMPH
+       // currentVehicle->image->frameGeometry()
+        //currentVehic le->image->setGeometry(0,0, 270,270);
     }
-
-};

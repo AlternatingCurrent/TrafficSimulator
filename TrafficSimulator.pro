@@ -22,13 +22,6 @@ SOURCES += main.cpp\
     contextobject.cpp \
     concreteinterceptor.cpp \
     loggingapp.cpp \
-    overtakeaggressive.cpp \
-    overtakemediumaggressiveness.cpp \
-    overtakelowaggressiveness.cpp \
-    increasespeedaggressive.cpp \
-    increasespeedmedium.cpp \
-    increasespeedlow.cpp \
-    decreasespeed.cpp \
     trafficlights.cpp \
     pedestrian.cpp \
     simulationframe.cpp \
@@ -36,7 +29,15 @@ SOURCES += main.cpp\
     pedestrianmaker.cpp \
     vehiclefactory.cpp \
     carwithtrailer.cpp \
-    randomgenerator.cpp
+    randomgenerator.cpp \
+    strategycontext.cpp \
+    increasespeedaggressive.cpp \
+    increasespeedmedium.cpp \
+    increasespeedlow.cpp \
+    overtakelow.cpp \
+    overtakemedium.cpp \
+    overtakehigh.cpp \
+    decreasespeed.cpp
 
 HEADERS  += mainwindow.h \
     vehicle.h \
@@ -55,7 +56,15 @@ HEADERS  += mainwindow.h \
     pedestrianmaker.h \
     vehiclefactory.h \
     carwithtrailer.h \
-    randomgenerator.h
+    randomgenerator.h \
+    strategycontext.h \
+    increasespeedaggressive.h \
+    increasespeedmedium.h \
+    increasespeedlow.h \
+    overtakelow.h \
+    overtakemedium.h \
+    overtakehigh.h \
+    decreasespeed.h
 
 FORMS    += mainwindow.ui
 

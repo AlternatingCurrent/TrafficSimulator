@@ -1,17 +1,16 @@
-#include "increasespeedlow.h"
+#include "overtakehigh.h"
 
-IncreaseSpeedLow::IncreaseSpeedLow()
+OvertakeHigh::OvertakeHigh()
 {
 
 }
 
-
-void IncreaseSpeedLow :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
+void OvertakeHigh :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
        if(currentVehicle->currentSpeed < currentVehicle->LowAggressiveTopSpeed && currentVehicle->currentSpeed < currentVehicle->speedLimit){
            doOperation(currentVehicle);
        }
     }
 
-void IncreaseSpeedLow :: doOperation(Vehicle * currentVehicle){
+void OvertakeHigh :: doOperation(Vehicle * currentVehicle){
         currentVehicle->currentSpeed += 5;  //10KMPH
  }

@@ -84,19 +84,6 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QFontComboBox" name="addVehicles">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>40</y>
-      <width>188</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="currentText">
-     <string>Choose Vehicle</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnAddVehicle">
     <property name="geometry">
      <rect>
@@ -149,19 +136,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QFontComboBox" name="Agressiveness">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>80</y>
-      <width>188</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="currentText">
-     <string>Agressiveness</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnAddTrafficLightsPedestrianCrossing">
     <property name="geometry">
      <rect>
@@ -173,6 +147,42 @@
     </property>
     <property name="text">
      <string>Add Pedestrian Crossing</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="addVehicles">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>20</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Aggressiveness">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>80</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="mainSimulation">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>40</y>
+      <width>761</width>
+      <height>281</height>
+     </rect>
     </property>
    </widget>
   </widget>

@@ -32,6 +32,8 @@ SimulationFrame::SimulationFrame()
   //setStyleSheet("border-width: 0px; border-style: solid");
    //setContentsMargins(QMargins());
 
+
+
 }
 
 

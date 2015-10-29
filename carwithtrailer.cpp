@@ -9,7 +9,7 @@ carwithtrailer::carwithtrailer(Subject *aVehicle, int width, int height, double 
   this->aVehicle->attach(this);
 }
 
-void carwithtrailer::update(){
+void carwithtrailer::update(vector<Vehicle *> vehicles){
   std::cout << "regular car scan ahead";
 
   //Call Methods

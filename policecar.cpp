@@ -1,5 +1,6 @@
 #include "policecar.h"
 #include <QGraphicsPixmapItem>
+
 PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggression, QGraphicsItem *parent):Vehicle(width,height,aggression)
 {
     setUp();
@@ -8,7 +9,7 @@ PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggressio
  this->aVehicle->attach(this);
 }
 
-void PoliceCar::update(){
+void PoliceCar::update(vector<Vehicle *> vehicles){
    std::cout << "PoliceCar Scan Ahead";
    //Does all the checks from vehicle
    //When somebody is speeding we can just add a method call
