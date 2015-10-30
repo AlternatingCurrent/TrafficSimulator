@@ -6,7 +6,8 @@ using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    mState(new Setup()) //State behaviour, on start up state is set to Setup()
 {
     ui->setupUi(this);
     asubject = new Subject();
@@ -97,3 +98,30 @@ void MainWindow::on_addVehicles_currentIndexChanged(const QString &arg1)
 {
     ui->Aggressiveness->setVisible(true);
 }
+
+// State behaviour calls
+void MainWindow::addRoad()
+{
+    mState->addRoad(*this);
+}
+
+void MainWindow::addVehicle()
+{
+    mState->addVehicle(*this);
+}
+
+void MainWindow::runSimulation()
+{
+    mState->runSimulation(*this);
+}
+
+void MainWindow::stopSimulation()
+{
+    mState->stopSimulation(*this);
+}
+
+void MainWindow::viewReport()
+{
+    mState->viewReport(*this);
+}
+

@@ -14,7 +14,7 @@
 #include <functional>
 #include <iostream>
 #include <time.h>
- #include <chrono>
+#include <chrono>
 #include <QDebug>
 #include <vector>
 #include <QtGui>
@@ -24,19 +24,30 @@
 #include "policecar.h"
 #include "regularcar.h"
 #include "subject.h"
+#include "mainwindowstates.h"
 
 namespace Ui {
 class MainWindow;
 }
 
+class AbstractState;
+
 class MainWindow : public QMainWindow
 {
+    friend class AbstractState;
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void beginSimulation();
+
+    // State behaviour
+    void addRoad();
+    void addVehicle();
+    void runSimulation();
+    void stopSimulation();
+    void viewReport();
 
 private slots:
 
@@ -48,8 +59,6 @@ private slots:
 
     void on_btnStop_clicked();
 
-
-
     void on_addVehicles_currentIndexChanged(const QString &arg1);
 
 private:
@@ -58,6 +67,9 @@ private:
     trafficlights * lights;
     QGraphicsScene *scene;
     std::vector<Vehicle*> vehicles;
+
+    // State behaviour
+    AbstractState *mState;
 };
 
 #endif // MAINWINDOW_H
