@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     overtakemedium.cpp \
     overtakehigh.cpp \
     decreasespeed.cpp \
-    mainwindowstates.cpp
+    mainwindowstates.cpp \
+    regularpedestrian.cpp
 
 HEADERS  += mainwindow.h \
     vehicle.h \
@@ -66,7 +67,8 @@ HEADERS  += mainwindow.h \
     overtakemedium.h \
     overtakehigh.h \
     decreasespeed.h \
-    mainwindowstates.h
+    mainwindowstates.h \
+    regularpedestrian.h
 
 FORMS    += mainwindow.ui
 

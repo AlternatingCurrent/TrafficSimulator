@@ -20,14 +20,35 @@ athlete::~athlete()
 
 }
 
+double athlete::getMaxRange()
+{
+    return maxRange;
+}
+
+double athlete::getDistanceTravelled()
+{
+    return distanceTravelled;
+}
+
+void athlete::setMaxRange(double range)
+{
+    maxRange=range;
+}
+
+void athlete::setDistanceTravelled(double dist)
+{
+    distanceTravelled= dist;
+}
+
+
 void athlete::setSpeed(int speed)
 {
-    pedestrian::setSpeed(speed);
+    this->speed = speed;
 }
 
 int athlete::getSpeed()
 {
-   return pedestrian::getSpeed();
+   return speed;
 }
 //overridding move
 void athlete::move()

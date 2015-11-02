@@ -8,10 +8,14 @@ class athlete: public pedestrian
 public:
     athlete(QGraphicsItem * parent =0);
     ~athlete();
-    void setSpeed(int speed);
-    int  getSpeed();
+    virtual double getMaxRange();
+    virtual double getDistanceTravelled();
+    virtual void setMaxRange(double range);
+    virtual void setDistanceTravelled(double dist);
+    virtual void setSpeed(int speed);
+    virtual int  getSpeed();
 public slots:
-    void move();
+    virtual void move();
 private:
     double maxRange;
     double distanceTravelled;

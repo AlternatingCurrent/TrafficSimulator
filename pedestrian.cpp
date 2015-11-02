@@ -1,3 +1,4 @@
+/*
 #include "pedestrian.h"
 #include <QPixmap>
 #include <QTimer>
@@ -38,27 +39,4 @@ void pedestrian::setDistanceTravelled(double dist)
     distanceTravelled= dist;
 }
 
-void pedestrian::setSpeed(int speed1)
-{
-    speed =speed1;
-}
-
-int pedestrian::getSpeed()
-{
-    return speed;
-}
-
-void pedestrian::move()
-{
-   int STEP_SIZE = 30;
-   double theta = rotation(); // degrees
-   double dy = STEP_SIZE * qSin(qDegreesToRadians(theta));
-   double dx = STEP_SIZE * qCos(qDegreesToRadians(theta));
-   if(y()< maxRange ){
-   setPos(x(), y()+speed);
-   }
-   else{
-       delete this;
-   }
-
-}
+*/
