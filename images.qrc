@@ -9,5 +9,6 @@
         <file>cartrailer.png</file>
         <file>carRedLeft.png</file>
         <file>carRedRight.png</file>
+        <file>baby.png</file>
     </qresource>
 </RCC>
