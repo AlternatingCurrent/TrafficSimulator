@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QGraphicsView>
 #include <QMainWindow>
 #include "subject.h"
 #include "QGraphicsScene"
@@ -25,7 +25,7 @@
 #include "regularcar.h"
 #include "subject.h"
 #include "mainwindowstates.h"
-
+#include <QObject>
 namespace Ui {
 class MainWindow;
 }
@@ -41,14 +41,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void beginSimulation();
-
     // State behaviour
     void addRoad();
     void addVehicle();
     void runSimulation();
     void stopSimulation();
     void viewReport();
-
+    void addPedestrian();
+public slots:
+    void trafficlightsCheck();
 private slots:
 
     void on_btnWeather_clicked();
@@ -62,12 +63,13 @@ private slots:
     void on_addVehicles_currentIndexChanged(const QString &arg1);
 
 private:
-    Ui::MainWindow *ui;
     Subject * asubject;
     trafficlights * lights;
-    QGraphicsScene *scene;
+    Ui::MainWindow *ui;
+    static MainWindow mainwindow;
     std::vector<Vehicle*> vehicles;
-
+    QGraphicsScene *scene;
+    QGraphicsView * view;
     // State behaviour
     AbstractState *mState;
 };

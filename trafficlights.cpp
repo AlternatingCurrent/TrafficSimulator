@@ -10,11 +10,11 @@
 #include <vehicle.h>
 #include <QGraphicsRectItem>
 #include <QGraphicsItem>
-#include "MainWindow.h"
 #include "athlete.h"
 #include "pedestrianmaker.h"
+#include "Mainwindow.h"
 extern SimulationFrame * sim;
-
+extern MainWindow * mainwindow;
 trafficlights::trafficlights(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     setUp();
@@ -44,9 +44,13 @@ void trafficlights::cross_road(int pedestrianNo)
     pedestrian  * ped ;
     ped =pedmaker->makeRandomPedestrian();
     ped->setPos(x()+20,y()+60);
-    QLineF ln(QPointF(x(),y()),destination);
+     QLineF ln(QPointF(x(),y()),destination);
     int angle = -1* ln.angle(); //must be made clockwiese *-1
-    sim->scene->addItem(ped);                                      //this need to be fixed undefined refernce?? not sure why
+   // sim->scene->addItem(ped);
+    //mainwindow->scene->addItem(ped);//this need to be fixed undefined refernce?? not sure why
+   // mainwindow->view->scene()->addItem(ped);
+//    mainwindow->mainwindow.scene->addItem(ped);
+
     pedestrianCount+=1;
     }
 
@@ -60,6 +64,25 @@ bool trafficlights::getTrafficLightsState()
 bool trafficlights::get_has_vehicle()
 {
     return has_vehicle;
+}
+
+void trafficlights::setPosOfLights(int x, int y)
+{
+    xPos = x;
+    yPos = y;
+}
+
+int trafficlights::getPos(QString x)
+{
+    if(x=="x"){
+        return xPos;
+    }
+    else if(x=="y"){
+        return yPos;
+    }
+    else{
+        return 0;
+    }
 }
 
 void trafficlights::acquire_target()

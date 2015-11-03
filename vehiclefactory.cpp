@@ -6,7 +6,31 @@
 #include "carwithtrailer.h"
 #include <time.h>
 #include "subject.h"
+#include <QDebug>
+#include <random>
 #include "randomgenerator.h"
+using namespace std;
+//struct RandomGenerator/*::RandomGenerator*/
+//{
+
+//   mt19937 _engine;
+//   uniform_int_distribution<int> _dist;
+
+//   RandomGenerator(int start, int end)
+//           :_engine {random_device{} ()},
+//             _dist(start, end)
+//   {
+
+//}
+
+//int createRandomNumber()
+//{
+//  //qDebug()<< "result" << _dist(_engine) ;
+// return _dist(_engine);
+
+//}
+//};
+
 VehicleFactory::VehicleFactory()
 {
     asubject = new Subject();
@@ -39,8 +63,14 @@ Vehicle *VehicleFactory::createRandomVehicle()
 {
 
     Vehicle * vehicle;
-    RandomGenerator * ranGen = new RandomGenerator();
-    int randomNumber = ranGen->createRandomNumber(1,3);
+//    RandomGenerator * ranGen = new RandomGenerator(1,3);
+//    int randomNumber =0;
+//    randomNumber = ranGen->createRandomNumber();
+    RandomGenerator * ranGen;
+      int randomNumber =0;
+      randomNumber = ranGen->createRandomNumber(1,3);
+
+    qDebug()<< "result" << randomNumber ;
     //trying to minimise if statments
     switch(randomNumber == 1) {
         case 1:

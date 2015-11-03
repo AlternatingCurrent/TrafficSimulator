@@ -5,7 +5,7 @@
 #include <QGraphicsItem>
 #include <QPoint>
 #include <QObject>
-
+#include <QString>
 class trafficlights: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
@@ -16,6 +16,8 @@ public:
     bool trafficLightOn;
     bool getTrafficLightsState();
     bool get_has_vehicle();
+    void setPosOfLights(int x, int y);
+    int getPos(QString x);
 public slots:
     void acquire_target();
     void traffic_light_timer();
@@ -26,7 +28,8 @@ private:
     QGraphicsRectItem * area;
     QPointF destination;
     bool has_vehicle;
-
+    int xPos;
+    int yPos;
 };
 
 #endif // TRAFFICLIGHTS_H

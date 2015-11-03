@@ -10,6 +10,7 @@
 #include "increasespeedaggressive.cpp"
 #include "simulationframe.h"
 #include "vehiclefactory.h"
+#include "randomgenerator.h"
 SimulationFrame * sim;
 using namespace std;
 int main(int argc, char *argv[])
@@ -34,8 +35,8 @@ int main(int argc, char *argv[])
     w.show();
     w.beginSimulation();
 
-    sim = new SimulationFrame();
-    sim->show();
+//    sim = new SimulationFrame();
+//    sim->show();
 
     return a.exec();
 

@@ -1,7 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-
+#include "simulationframe.h"
+#include "QGraphicsScene"
+#include <QTimer>
+#include <QPointF>
+#include "qmath.h"
+#include <QTransform>
+#include <functional>
+#include <iostream>
+#include <time.h>
+ #include <chrono>
+#include <QDebug>
+#include "pedestrian.h"
+#include "pedestrianmaker.h"
+#include <QTimer>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -70,6 +82,10 @@ void MainWindow::on_btnStop_clicked()
 }
 void MainWindow::beginSimulation()
 {
+    QTimer * timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
+    timer->start(500);
+
     QPixmap roadImage(":/Road.jpg");
     ui->mainDisplay->setScaledContents(true);
     ui->mainDisplay->setPixmap(roadImage);
@@ -85,13 +101,15 @@ void MainWindow::beginSimulation()
 
     QPixmap watermark(":/Road.jpg");
     QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-
     scene = new QGraphicsScene(this);
     ui->mainSimulation->setScene(scene);
     scene->setBackgroundBrush(QBrush(newPixmap));
     lights = new trafficlights();
     lights->setPos(800,250);
+    lights->setPosOfLights(800,250);
     scene->addItem(lights);
+//    addPedestrian(); //this will be cchanged to be called whenever lights are red
+
 }
 
 void MainWindow::on_addVehicles_currentIndexChanged(const QString &arg1)
@@ -125,3 +143,22 @@ void MainWindow::viewReport()
     mState->viewReport(*this);
 }
 
+void MainWindow::addPedestrian(){
+    pedestrianmaker * pedmaker = new pedestrianmaker();
+    pedestrian  * ped ;
+    ped =pedmaker->makeRandomPedestrian();
+    ped->setPos(lights->getPos("x")+20,lights->getPos("y") +60);
+    scene->addItem(ped);
+}
+
+
+void MainWindow::trafficlightsCheck()
+{
+    if(lights->trafficLightOn == true){
+        addPedestrian();
+        return;
+    }
+    else{
+        return;
+    }
+}
