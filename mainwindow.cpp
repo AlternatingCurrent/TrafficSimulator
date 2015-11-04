@@ -37,48 +37,59 @@ void MainWindow::on_btnWeather_clicked()
 
 void MainWindow::on_btnAddVehicle_clicked()
 {
-  string aggressiveness;
-  string vehicleType;
+    string aggressiveness;
+      string vehicleType;
 
- //  aCar->speedUp();
-  // car2->speedUp();
- // QPixmap carLeft(":/carRedLeft.png");
- // QLabel *label = new QLabel(this);
- // label->setScaledContents(true);
- // label->setPixmap(carLeft);
-  //label->setParent(ui->mainDisplay);
-  //label->setGeometry(0,0,110,270);
-  //label->show();
+      Subject * asubject = new Subject();
+      QGraphicsItem * a;
+      QGraphicsItem * b;
+      QGraphicsItem * c;
+      QGraphicsItem * d;
+    //  Vehicle * aCar = new PoliceCar(asubject,50,50,3,a);
+
+      Vehicle * car2 = new RegularCar(asubject,50,50,3, a);
+      Vehicle * car1 = new RegularCar(asubject,50,50,1, b);
+      Vehicle * car3 = new RegularCar(asubject,50,50,2, c);
+      Vehicle * car4 = new RegularCar(asubject,50,50,2, d);
+
+      scene->addItem(car2);
+      scene->addItem(car1);
+      scene->addItem(car3);
+      scene->addItem(car4);
+
+      car3->setPos(1000, 400);
+      car1->setPos(150,450);
+      car2->setPos(0,450);
+      car3->setPos(100,450);
+      aggressiveness = ui->Aggressiveness->currentText().toStdString();
+      vehicleType    = ui->addVehicles->currentText().toStdString();
 
 
-  Subject * asubject = new Subject();
-  QGraphicsItem * a;
-
-  Vehicle * aCar = new PoliceCar(asubject,50,50,3,a);
-
-  Vehicle * car2 = new RegularCar(asubject,50,50,3, a);
-  scene->addItem(car2);
-
-  aggressiveness = ui->Aggressiveness->currentText().toStdString();
-  vehicleType    = ui->addVehicles->currentText().toStdString();
-
-  cout << aggressiveness << "\n" << vehicleType;
-
-  //vehicles.push_back(car2);
+      vehicles.push_back(car2);
+      vehicles.push_back(car3);
+      vehicles.push_back(car1);
+      vehicles.push_back(car4);
 
 }
 
 void MainWindow::on_btnStart_clicked()
 {
-   // asubject->notifyAllVehicles();
-    //for(int i =0; i< vehicles.size();i++){
-        //vehicles.at(i)->update(vehicles);
-   // }
+    //  asubject->notifyAllVehicles();
+        start_stop = 1;
+
+        while(start_stop){
+
+        for(int i =0; i< vehicles.size();i++){
+            vehicles.at(i)->update(vehicles);
+          }
+          delay();
+          qApp->processEvents();
+        }
 }
 
 void MainWindow::on_btnStop_clicked()
 {
-
+    start_stop =0;
 }
 void MainWindow::beginSimulation()
 {
@@ -87,27 +98,25 @@ void MainWindow::beginSimulation()
     timer->start(500);
 
     QPixmap roadImage(":/Road.jpg");
-    ui->mainDisplay->setScaledContents(true);
-    ui->mainDisplay->setPixmap(roadImage);
-    ui->Aggressiveness->setVisible(false);
+        ui->Aggressiveness->setVisible(false);
 
-    ui->addVehicles->addItem("Car");
-    ui->addVehicles->addItem("Police Car");
-    ui->addVehicles->addItem("Motorbike");
+        ui->addVehicles->addItem("Car");
+        ui->addVehicles->addItem("Police Car");
+        ui->addVehicles->addItem("Motorbike");
 
-    ui->Aggressiveness->addItem("Low");
-    ui->Aggressiveness->addItem("Medium");
-    ui->Aggressiveness->addItem("High");
+        ui->Aggressiveness->addItem("Low");
+        ui->Aggressiveness->addItem("Medium");
+        ui->Aggressiveness->addItem("High");
 
-    QPixmap watermark(":/Road.jpg");
-    QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-    scene = new QGraphicsScene(this);
-    ui->mainSimulation->setScene(scene);
-    scene->setBackgroundBrush(QBrush(newPixmap));
-    lights = new trafficlights();
-    lights->setPos(800,250);
-    lights->setPosOfLights(800,250);
-    scene->addItem(lights);
+        QPixmap watermark(":/Road.jpg");
+        QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
+
+        scene = new QGraphicsScene(this);
+        ui->mainSimulation->setScene(scene);
+        scene->setBackgroundBrush(QBrush(newPixmap));
+        lights = new trafficlights();
+        lights->setPos(800,250);
+        scene->addItem(lights);
 //    addPedestrian(); //this will be cchanged to be called whenever lights are red
 
 }
@@ -162,3 +171,12 @@ void MainWindow::trafficlightsCheck()
         return;
     }
 }
+
+//Stop vehicles from accelerating too quickly
+void MainWindow :: delay()
+{
+    QTime dieTime= QTime::currentTime().addMSecs(75);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+

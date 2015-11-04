@@ -2,7 +2,7 @@
 #define STRATEGYCONTEXT_H
 
 #include "vehiclestrategy.h"
-//#include "vehicle.h"
+#include "vehicle.h"
 #include <vector>
 class Vehicle;
 using namespace std;

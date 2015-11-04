@@ -3,10 +3,12 @@
 #include "subject.h"
 carwithtrailer::carwithtrailer(Subject *aVehicle, int width, int height, double aggression, QGraphicsItem *parent):Vehicle(width,height,aggression)
 {
-    setUp();
+
   //this->topSpeed = 100;
+
   this->aVehicle = aVehicle;
   this->aVehicle->attach(this);
+  setUp();
 }
 
 void carwithtrailer::update(vector<Vehicle *> vehicles){

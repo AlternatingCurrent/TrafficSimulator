@@ -20,7 +20,7 @@ void PoliceCar::setUp()
 {
 
     QPixmap watermark(":/policeCar.png");
-    QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
+    QPixmap newPixmap = watermark.scaled(QSize(100,100),  Qt::KeepAspectRatio);
     setPixmap(newPixmap);
     QRectF rect(40,-60,230,100);
     area = new QGraphicsRectItem(rect,this);

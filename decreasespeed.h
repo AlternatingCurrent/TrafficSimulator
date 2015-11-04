@@ -10,6 +10,9 @@ public:
     DecreaseSpeed();
     void decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle);
     void doOperation(Vehicle * currentVehicle);
+private:
+    Vehicle * vehicleInFront;
+
 signals:
 
 public slots:

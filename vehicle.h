@@ -1,32 +1,22 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 #include <QGraphicsPixmapItem>
-#include <QObject>
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include "dispatcher.h"
 #include "contextobject.h"
-
-//#include "increasespeedaggressive.h";
-//#include "increasespeedlow.h";
-//#include "increasespeedmedium.h";
-//#include "decreasespeed.h";
-//#include "overtakehigh.h";
-//#include "overtakelow.h";
-//#include "overtakemedium.h";
+#include "increasespeedaggressive.h";
+#include "increasespeedlow.h";
+#include "increasespeedmedium.h";
+#include "decreasespeed.h";
+#include "overtakehigh.h";
+#include "overtakelow.h";
+#include "overtakemedium.h";
 
 #include <vector>
 
 using namespace std;
 
-//class OvertakeLow;
-//class OvertakeMedium;
-//class OvertakeHigh;
-//class IncreaseSpeedLow;
-//class IncreaseSpeedHigh;
-//class IncreaseSpeedMedium;
-//class DecreaseSpeed;
-
- //#include "StrategyContext.h";
+#include "StrategyContext.h";
 
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
@@ -69,13 +59,12 @@ public:
 
 
     //***********VARIABLES*****************:
-
     //Range of view will act as a radius in which the drivers can see
     int rangeOfView;
 
     enum vehcileAttributes {HeightOfVehicle, WidthOfCar};
     enum Aggressiveness    {Low = 1 , Medium = 2, High = 3};
-    enum topSpeeds         {LowAggressiveTopSpeed = 60, MediumAggressiveTopSpeed = 100, HighAggressiveTopSpeed = 120};
+    enum topSpeeds         {LowAggressiveTopSpeed = 60, MediumAggressiveTopSpeed = 100, HighAggressiveTopSpeed = 160};
     //Aggrassive drivers will still try and increase speed/overtake in a smallopening
     //and respectively non-aggresive drivers will be more cautious
     enum Distances         {SmallOpening = 30, MediumOpening = 60, LargeOpening = 100, OverTakingDistance = 200};
@@ -89,8 +78,8 @@ public:
     int aggression;
     int width;
     int height;
-    int currentSpeed;
-
+    int currentSpeed = 0;
+    bool isOvertaking;
     //Add this to the constructor so it can change
     //And thus change the outcome of the simulation
     int speedLimit;

@@ -10,6 +10,7 @@ public:
     OvertakeHigh();
     void decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle);
     void doOperation(Vehicle * currentVehicle);
+
 signals:
 
 public slots:

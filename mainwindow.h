@@ -48,6 +48,7 @@ public:
     void stopSimulation();
     void viewReport();
     void addPedestrian();
+     void delay();
 public slots:
     void trafficlightsCheck();
 private slots:
@@ -72,6 +73,8 @@ private:
     QGraphicsView * view;
     // State behaviour
     AbstractState *mState;
+
+     bool start_stop;
 };
 
 #endif // MAINWINDOW_H

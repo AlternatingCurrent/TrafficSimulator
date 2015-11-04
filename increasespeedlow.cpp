@@ -1,5 +1,6 @@
 #include "increasespeedlow.h"
-
+#include <iostream>
+using namespace std;
 IncreaseSpeedLow::IncreaseSpeedLow()
 {
 
@@ -7,11 +8,16 @@ IncreaseSpeedLow::IncreaseSpeedLow()
 
 
 void IncreaseSpeedLow :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
-       if(currentVehicle->currentSpeed < currentVehicle->LowAggressiveTopSpeed && currentVehicle->currentSpeed < currentVehicle->speedLimit){
-           doOperation(currentVehicle);
-       }
+       if((currentVehicle->currentSpeed <= currentVehicle->LowAggressiveTopSpeed) && (currentVehicle->currentSpeed <= currentVehicle->speedLimit)){
+          newCoOrdinateBasedOnSpeed = (currentVehicle->pos().x()) + ((currentVehicle->currentSpeed += 10) /10);
+          doOperation(currentVehicle);
+       }else{
+         //If they reach thier top speed then increase proportionate to the top speed
+         newCoOrdinateBasedOnSpeed = (currentVehicle->pos().x()) + ((currentVehicle->currentSpeed) /10);
+         doOperation(currentVehicle);
+     }
     }
 
 void IncreaseSpeedLow :: doOperation(Vehicle * currentVehicle){
-        currentVehicle->currentSpeed += 5;  //10KMPH
- }
+    currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+}

@@ -2,8 +2,6 @@
 #define REGULARCAR_H
 #include "vehicle.h"
 #include "subject.h"
-#include <QObject>
-#include <QGraphicsPixmapItem>
 #include <vector>
 
 using namespace std;
