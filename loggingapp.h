@@ -17,8 +17,7 @@ public:
     void updateTextFile();
     ConcreteInterceptor getInterceptor();
 
-
-private:
+//private:
     ConcreteInterceptor cInterceptor;
     std::vector <loggingInfo > speed_time_values;
 
