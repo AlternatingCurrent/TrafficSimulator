@@ -15,5 +15,6 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += tst_test_loggingapptest.cpp
+SOURCES += tst_test_loggingapptest.cpp \
+    pedestrian_factory_test.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

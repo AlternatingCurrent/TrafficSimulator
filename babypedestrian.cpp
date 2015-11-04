@@ -1,6 +1,7 @@
 #include "babypedestrian.h"
 #include "pedestrian.h"
 #include <QTimer>
+#include <QDebug>
 
 BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
 {
@@ -14,6 +15,7 @@ BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
     maxRange=550;
     distanceTravelled=0;
     speed = 6;
+    qDebug() <<"baby created";
 }
 
 BabyPedestrian::~BabyPedestrian()
@@ -52,10 +54,15 @@ int BabyPedestrian::getCrawlSpeed()
    return speed;
 }
 //overridding move
+
+
+
+//change this from move to crawl
 void BabyPedestrian::move()
 {
     if(y()< maxRange ){
     setPos(x(), y()+speed);
+    qDebug()<< "moving" ;
     }
     else{
         delete this;

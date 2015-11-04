@@ -7,6 +7,7 @@ BabyPedestrianAdapter::BabyPedestrianAdapter(BabyPedestrian *aBaby)
 {
 
     theBaby = aBaby;
+
 }
 
 BabyPedestrianAdapter::~BabyPedestrianAdapter()
@@ -48,5 +49,6 @@ int BabyPedestrianAdapter::getSpeed()
 void BabyPedestrianAdapter::move()
 {
     theBaby->crawl();
+
 }
 

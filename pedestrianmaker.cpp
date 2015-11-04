@@ -5,6 +5,7 @@
 #include "babypedestrianadapter.h"
 #include "athlete.h"
 #include "time.h"
+#include <QDebug>
 pedestrianmaker::pedestrianmaker()
 {
 
@@ -25,6 +26,7 @@ pedestrian *pedestrianmaker::makeRandomPedestrian()
     }else if(random_number == 1 ){
         BabyPedestrian *baby = new BabyPedestrian();
         ped = new BabyPedestrianAdapter(baby);
+        qDebug()<< "baby" ;
         return ped;
     }
     else{
@@ -32,3 +34,35 @@ pedestrian *pedestrianmaker::makeRandomPedestrian()
     }
 
 }
+
+pedestrian *pedestrianmaker::makePedestrian(QString pedestrianType)
+{
+    QString regular ="regular", athlete1 = "athlete", baby = "baby";
+    pedestrian *  ped = new RegularPedestrian();
+
+    if(pedestrianType ==regular){
+        return ped;
+    }
+    else if(pedestrianType == athlete1){
+
+        ped = new athlete();
+        return ped;
+    }
+    else if(pedestrianType == baby){
+
+        BabyPedestrian *baby = new BabyPedestrian();
+        ped = new BabyPedestrianAdapter(baby);
+        return ped;
+
+    }
+    else{
+        return 0;
+    }
+
+
+
+
+}
+
+
+
