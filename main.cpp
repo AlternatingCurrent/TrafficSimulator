@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     VehicleStrategy *f = new IncreaseSpeedAggressive();
 
     MainWindow w;
-    w.show();
+    w.showMaximized();
     w.beginSimulation();
 
 //    sim = new SimulationFrame();

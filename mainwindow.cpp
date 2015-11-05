@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     asubject = new Subject();
+
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +38,7 @@ void MainWindow::on_btnWeather_clicked()
 
 void MainWindow::on_btnAddVehicle_clicked()
 {
-    string aggressiveness;
+      string aggressiveness;
       string vehicleType;
 
       Subject * asubject = new Subject();
@@ -93,11 +94,12 @@ void MainWindow::on_btnStop_clicked()
 }
 void MainWindow::beginSimulation()
 {
+    setUp();
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
     timer->start(500);
 
-    QPixmap roadImage(":/Road.jpg");
+     // QPixmap roadImage(":/Road.jpg");
         ui->Aggressiveness->setVisible(false);
 
         ui->addVehicles->addItem("Car");
@@ -108,15 +110,9 @@ void MainWindow::beginSimulation()
         ui->Aggressiveness->addItem("Medium");
         ui->Aggressiveness->addItem("High");
 
-        QPixmap watermark(":/Road.jpg");
-        QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-
-        scene = new QGraphicsScene(this);
-        ui->mainSimulation->setScene(scene);
-        scene->setBackgroundBrush(QBrush(newPixmap));
-        lights = new trafficlights();
-        lights->setPos(800,250);
-        scene->addItem(lights);
+//        lights = new trafficlights();
+//        lights->setPos(800,250);
+//        scene->addItem(lights);
 //    addPedestrian(); //this will be cchanged to be called whenever lights are red
 
 }
@@ -124,6 +120,18 @@ void MainWindow::beginSimulation()
 void MainWindow::on_addVehicles_currentIndexChanged(const QString &arg1)
 {
     ui->Aggressiveness->setVisible(true);
+}
+
+void MainWindow::setUp()
+{
+
+    QPixmap watermark(":/Road.jpg");
+  //  QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
+    scene = new QGraphicsScene(this);
+    ui->mainSimulation->setScene(scene);
+    ui->mainSimulation->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->mainSimulation->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+   scene->setBackgroundBrush(QBrush(QImage(":/Road.jpg")));
 }
 
 // State behaviour calls

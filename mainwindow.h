@@ -64,6 +64,7 @@ private slots:
     void on_addVehicles_currentIndexChanged(const QString &arg1);
 
 private:
+    void setUp();
     Subject * asubject;
     trafficlights * lights;
     Ui::MainWindow *ui;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1324</width>
-    <height>693</height>
+    <width>1905</width>
+    <height>1040</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="btnStart">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>440</y>
+      <x>10</x>
+      <y>810</y>
       <width>111</width>
       <height>23</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="btnStop">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>440</y>
+      <x>130</x>
+      <y>810</y>
       <width>111</width>
       <height>23</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QLabel" name="lblOutcome">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>460</y>
+      <x>10</x>
+      <y>830</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -64,8 +64,8 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>500</y>
+      <x>0</x>
+      <y>860</y>
       <width>531</width>
       <height>121</height>
      </rect>
@@ -74,8 +74,8 @@
    <widget class="QScrollBar" name="verticalScrollBar">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>500</y>
+      <x>510</x>
+      <y>860</y>
       <width>20</width>
       <height>121</height>
      </rect>
@@ -87,8 +87,8 @@
    <widget class="QPushButton" name="btnAddVehicle">
     <property name="geometry">
      <rect>
-      <x>1180</x>
-      <y>110</y>
+      <x>1750</x>
+      <y>90</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -100,8 +100,8 @@
    <widget class="QFontComboBox" name="Weather">
     <property name="geometry">
      <rect>
-      <x>1120</x>
-      <y>270</y>
+      <x>1710</x>
+      <y>180</y>
       <width>188</width>
       <height>22</height>
      </rect>
@@ -113,8 +113,8 @@
    <widget class="QPushButton" name="btnWeather">
     <property name="geometry">
      <rect>
-      <x>1180</x>
-      <y>320</y>
+      <x>1750</x>
+      <y>220</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -126,8 +126,8 @@
    <widget class="QPushButton" name="btnAddTrafficLightsPedestrianCrossing">
     <property name="geometry">
      <rect>
-      <x>1150</x>
-      <y>160</y>
+      <x>1750</x>
+      <y>120</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -139,7 +139,7 @@
    <widget class="QComboBox" name="addVehicles">
     <property name="geometry">
      <rect>
-      <x>1140</x>
+      <x>1730</x>
       <y>10</y>
       <width>161</width>
       <height>22</height>
@@ -149,8 +149,8 @@
    <widget class="QComboBox" name="Aggressiveness">
     <property name="geometry">
      <rect>
-      <x>1140</x>
-      <y>60</y>
+      <x>1730</x>
+      <y>50</y>
       <width>161</width>
       <height>22</height>
      </rect>
@@ -165,10 +165,10 @@
    <widget class="QGraphicsView" name="mainSimulation">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>10</y>
-      <width>1091</width>
-      <height>411</height>
+      <width>1691</width>
+      <height>791</height>
      </rect>
     </property>
    </widget>
@@ -178,7 +178,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1324</width>
+     <width>1905</width>
      <height>21</height>
     </rect>
    </property>
