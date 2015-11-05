@@ -131,7 +131,7 @@ void MainWindow::setUp()
     ui->mainSimulation->setScene(scene);
     ui->mainSimulation->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->mainSimulation->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-   scene->setBackgroundBrush(QBrush(QImage(":/Road.jpg")));
+    scene->setBackgroundBrush(QBrush(QImage(":/RoadSized.png")));
 }
 
 // State behaviour calls
