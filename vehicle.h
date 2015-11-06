@@ -28,7 +28,7 @@ public:
 
     //***********METHODS*********************:
 
-    Vehicle(int width, int height, int aggression, QGraphicsItem * parent=0);
+    Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, QGraphicsItem * parent=0); //changed
     virtual ~Vehicle();
     Subject * aVehicle;
 
@@ -80,6 +80,8 @@ public:
     int height;
     int currentSpeed = 0;
     bool isOvertaking;
+    int xStartingPos;
+    int yStartingPos;
     //Add this to the constructor so it can change
     //And thus change the outcome of the simulation
     int speedLimit;

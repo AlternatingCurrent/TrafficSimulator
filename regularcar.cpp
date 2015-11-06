@@ -8,8 +8,10 @@
 #include <iostream>
 #include <QPen>
 
-RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggression, QGraphicsItem *parent):Vehicle(width,height,aggression)
+RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression,xStartingPos,yStartingPos)
 {
+  qDebug()<< xStartingPos;
+  setPos(xStartingPos, yStartingPos);
   setUp();
   //this->topSpeed = 100;
   this->aVehicle = aVehicle;
@@ -51,14 +53,16 @@ void RegularCar::setUp()
         QPixmap watermark(":/carRedRight.png"); //changed
         QPixmap newPixmap = watermark.scaled(QSize(50,50),  Qt::KeepAspectRatio);
         setPixmap(newPixmap);
-        QRectF rect(0,-60,200,100);
+        QRectF rect(-70,-225,700,170);
         //create qgraphicsRectItem
         //this->boundingRect().setPen(QPen(Qt::white));
         area = new QGraphicsRectItem(rect,this);
         area->setPen(QPen(Qt::white));
         area->setPos(x()-30,y()+25);
-       // this->boundingRect() = area;
-
+        //this->boundingRect() = area;
        // area->hide();
 }
+
+
+
 

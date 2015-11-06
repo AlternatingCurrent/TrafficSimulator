@@ -4,12 +4,14 @@
 #include <QGraphicsPixmapItem>
 using namespace std;
 
-Vehicle::Vehicle(int width, int height, int aggression, QGraphicsItem *parent)
+Vehicle::Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent)
 {
     this->width      = width;
     this->height     = height;
     this->aggression = aggression;
     speedLimit = 120;
+    this->xStartingPos = xStartingPos;
+    this->yStartingPos = yStartingPos;
 
 }
 

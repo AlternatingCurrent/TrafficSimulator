@@ -1,8 +1,9 @@
 #include "policecar.h"
 #include <QGraphicsPixmapItem>
 
-PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggression, QGraphicsItem *parent):Vehicle(width,height,aggression)
+PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression, xStartingPos, yStartingPos)
 {
+    setPos(xStartingPos, yStartingPos);
     setUp();
 // this->topSpeed = 120; //REVIEW WITH AARON AND JUAN, WILL WE ADD IT AS A PARAMETER OR HAVE IT SET
  this->aVehicle = aVehicle;
@@ -22,7 +23,7 @@ void PoliceCar::setUp()
     QPixmap watermark(":/policeCar.png");
     QPixmap newPixmap = watermark.scaled(QSize(100,100),  Qt::KeepAspectRatio);
     setPixmap(newPixmap);
-    QRectF rect(40,-60,230,100);
+    QRectF rect(-70,-225,700,170);
     area = new QGraphicsRectItem(rect,this);
    // area->setPen(QPen(Qt::white));
     area->setPos(x()-30,y()+50);

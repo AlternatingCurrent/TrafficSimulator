@@ -10,6 +10,9 @@ athlete::athlete(QGraphicsItem * parent)
     QTimer * move_timer = new QTimer(this);
     connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
     move_timer->start(50);
+//    while(){
+//       move();
+//    }
     maxRange=550;
     distanceTravelled=0;
     speed = 6;

@@ -22,7 +22,7 @@ void OvertakeHigh :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehic
        }
 
       //Find out if vehicle is collidinf with a vehicle on the left
-      if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && vehicles.at(i)->pos().y() == 450  ){
+      if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && vehicles.at(i)->pos().y() == 450  ){ //could be affected by juans change ~juan
              isColliding = true; }
      }
     }

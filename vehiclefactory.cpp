@@ -42,18 +42,18 @@ Vehicle *VehicleFactory::createVehicle(QString type)
     Vehicle * vehicle;
     QString redcar ="regularcar", policecar = "policecar", cartrailer = "carwithtrailer";
     if(type == redcar){
-       vehicle = new RegularCar(asubject,0,0,0.0);//this has to be changed (0,0,0);
+       vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
        return vehicle;
     }
     else if(type == policecar){
 
-         vehicle = new PoliceCar(asubject,0,0,0.0);//this has to be changed (0,0,0);
+         vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
          return vehicle;
 
     }
     else if(type == cartrailer){
 
-        vehicle = new carwithtrailer(asubject,0,0,0.0);
+        vehicle = new carwithtrailer(asubject,0,0,0.0,0,0);
         return vehicle;
     }
     else{
@@ -74,15 +74,15 @@ Vehicle *VehicleFactory::createRandomVehicle()
     //trying to minimise if statments
     switch(randomNumber == 1) {
         case 1:
-        vehicle = new RegularCar(asubject,0,0,0.0);//this has to be changed (0,0,0);
+        vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
         case 2:
-        vehicle = new PoliceCar(asubject,0,0,0.0);//this has to be changed (0,0,0);
+        vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
         case 3:
-        vehicle = new PoliceCar(asubject,0,0,0.0);//this has to be changed (0,0,0);
+        vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
     }

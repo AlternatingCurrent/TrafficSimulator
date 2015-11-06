@@ -48,28 +48,28 @@ void MainWindow::on_btnAddVehicle_clicked()
       QGraphicsItem * d;
     //  Vehicle * aCar = new PoliceCar(asubject,50,50,3,a);
 
-      Vehicle * car2 = new RegularCar(asubject,50,50,3, a);
-      Vehicle * car1 = new RegularCar(asubject,50,50,1, b);
-      Vehicle * car3 = new RegularCar(asubject,50,50,2, c);
-      Vehicle * car4 = new RegularCar(asubject,50,50,2, d);
+      Vehicle * car2 = new RegularCar(asubject,50,50,3,100,130, a);
+      Vehicle * car1 = new RegularCar(asubject,50,50,1,100,300, b);                             //100,40 ->  top top
+      Vehicle * car3 = new RegularCar(asubject,50,50,2,100,400, c);                             //100,130 -> top bottom
+      Vehicle * car4 = new RegularCar(asubject,50,50,2,100,680, d);                             //100,300 -> middle top
+                                                                                        //100,400 -> middle bottom
+       scene->addItem(car2);                                                            //100,580 -> bottom top
+//      scene->addItem(car1);                                                           //100,680 -> bottom bottom
+//      scene->addItem(car3);
+//      scene->addItem(car4);
 
-      scene->addItem(car2);
-      scene->addItem(car1);
-      scene->addItem(car3);
-      scene->addItem(car4);
-
-      car3->setPos(1000, 400);
-      car1->setPos(150,450);
-      car2->setPos(0,450);
-      car3->setPos(100,450);
+//      car3->setPos(200, 400);
+//      car1->setPos(200,400);
+    // car2->setPos(100,60);
+//      car3->setPos(200,400);
       aggressiveness = ui->Aggressiveness->currentText().toStdString();
       vehicleType    = ui->addVehicles->currentText().toStdString();
 
 
       vehicles.push_back(car2);
-      vehicles.push_back(car3);
-      vehicles.push_back(car1);
-      vehicles.push_back(car4);
+//      vehicles.push_back(car3);
+//      vehicles.push_back(car1);
+//      vehicles.push_back(car4);
 
 }
 
@@ -110,9 +110,9 @@ void MainWindow::beginSimulation()
         ui->Aggressiveness->addItem("Medium");
         ui->Aggressiveness->addItem("High");
 
-//        lights = new trafficlights();
-//        lights->setPos(800,250);
-//        scene->addItem(lights);
+        lights = new trafficlights();
+        lights->setPos(800,250);
+        scene->addItem(lights);
 //    addPedestrian(); //this will be cchanged to be called whenever lights are red
 
 }
@@ -127,7 +127,8 @@ void MainWindow::setUp()
 
     QPixmap watermark(":/Road.jpg");
   //  QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-    scene = new QGraphicsScene(this);
+   //scene = new QGraphicsScene(this);
+    scene = new QGraphicsScene(0,0,1691,791);
     ui->mainSimulation->setScene(scene);
     ui->mainSimulation->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->mainSimulation->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
