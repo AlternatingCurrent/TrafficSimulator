@@ -126,8 +126,6 @@ void MainWindow::setUp()
 {
 
     QPixmap watermark(":/Road.jpg");
-  //  QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-   //scene = new QGraphicsScene(this);
     scene = new QGraphicsScene(0,0,1691,791);
     ui->mainSimulation->setScene(scene);
     ui->mainSimulation->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -165,8 +163,15 @@ void MainWindow::addPedestrian(){
     pedestrianmaker * pedmaker = new pedestrianmaker();
     pedestrian  * ped ;
     ped =pedmaker->makeRandomPedestrian();
-    ped->setPos(lights->getPos("x")+20,lights->getPos("y") +60);
     scene->addItem(ped);
+    int posOfXLights = lights->x() + 20;
+    ped->setPos(posOfXLights,lights->y()+ped->getSpeed());
+    while(ped->y() < ped->getMaxRange()){
+             ped->setPos(posOfXLights,ped->y()+20);
+             delay();
+             qApp->processEvents();
+           }
+ delete ped;
 }
 
 

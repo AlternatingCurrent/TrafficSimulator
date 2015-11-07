@@ -9,12 +9,13 @@ BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
     QPixmap watermark(":/baby.png");
     QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
     setPixmap(newPixmap);
-    QTimer * move_timer = new QTimer(this);
-    connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
-    move_timer->start(50);
-    maxRange=550;
+//    QTimer * move_timer = new QTimer(this);
+//    connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
+//    move_timer->start(50);
+//    maxRange=550;
     distanceTravelled=0;
     speed = 6;
+    maxRange =550;
     qDebug() <<"baby created";
 }
 
