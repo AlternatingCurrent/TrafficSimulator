@@ -2,6 +2,10 @@
 #include "pedestrian.h"
 #include <QTimer>
 #include <QDebug>
+#include <time.h>
+#include <QCoreApplication>
+#include <QTime>
+using namespace std;
 
 BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
 {
@@ -13,6 +17,7 @@ BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
 //    connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
 //    move_timer->start(50);
 //    maxRange=550;
+    setPos(820,250);
     distanceTravelled=0;
     speed = 6;
     maxRange =550;
@@ -69,7 +74,21 @@ void BabyPedestrian::move()
         delete this;
     }
 }
-void BabyPedestrian::crawl()
+void BabyPedestrian::crawl(int x, int yPos)
 {
-    move();
+    int posOfXLights = x + 20;
+    while(y() < getMaxRange()){
+             setPos(posOfXLights,y()+20);
+             delay();
+             qApp->processEvents();
+             qDebug()<<"moving";
+           }
+    delete this;
+}
+
+void BabyPedestrian::delay()
+{
+    QTime dieTime= QTime::currentTime().addMSecs(75);
+        while (QTime::currentTime() < dieTime)
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

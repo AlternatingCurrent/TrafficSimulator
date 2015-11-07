@@ -3,6 +3,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
+#include <QPointF>
 class pedestrian: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
@@ -12,6 +13,8 @@ public:
     virtual void setDistanceTravelled(double dist) = 0;
     virtual void setSpeed(int speed1) = 0;
     virtual int  getSpeed() = 0;
+    virtual void move2(int x, int y) = 0;
+    virtual void delay() =0;
 public slots:
    virtual void move() = 0;
 

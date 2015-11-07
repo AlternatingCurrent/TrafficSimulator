@@ -26,7 +26,7 @@ pedestrian *pedestrianmaker::makeRandomPedestrian()
         return ped;
     }else if(random_number == 1 ){
         BabyPedestrian *baby = new BabyPedestrian();
-        ped = new   BabyPedestrianAdapter(baby);
+        ped = new  BabyPedestrianAdapter(baby);
         QPixmap watermark(":/baby.png");
         QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
         ped->setPixmap(newPixmap);

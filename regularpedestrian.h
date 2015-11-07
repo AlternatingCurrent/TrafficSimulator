@@ -15,8 +15,8 @@ public:
     virtual void setDistanceTravelled(double dist);
     virtual void setSpeed(int speed1);
     virtual int  getSpeed();
-    void testMove();
-    void delay();
+    virtual void move2(int x, int yPos);
+    virtual void delay();
 public slots:
    virtual void move();
 

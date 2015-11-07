@@ -15,7 +15,8 @@ public:
     virtual void setDistanceCrawled(double dist);
     virtual void setCrawlSpeed(int speed);
     virtual int  getCrawlSpeed();
-    virtual void crawl();
+    virtual void crawl(int x, int yPos);
+    virtual void delay();
 public slots:
     virtual void move();
 private:

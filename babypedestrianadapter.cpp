@@ -7,6 +7,7 @@ BabyPedestrianAdapter::BabyPedestrianAdapter(BabyPedestrian *aBaby)
 {
 
     theBaby = aBaby;
+    theBaby->setPos(800,250);
 
 }
 
@@ -43,12 +44,23 @@ void BabyPedestrianAdapter::setSpeed(int speed)
 
 int BabyPedestrianAdapter::getSpeed()
 {
-   return theBaby->getCrawlSpeed();
+    return theBaby->getCrawlSpeed();
+}
+
+void BabyPedestrianAdapter::move2(int x, int yPos)
+{
+    theBaby->crawl(x, yPos);
+}
+
+void BabyPedestrianAdapter::delay()
+{
+    theBaby->delay();
 }
 //overridding move
 void BabyPedestrianAdapter::move()
 {
-    theBaby->crawl();
+    int x=0, y=0;
+    theBaby->crawl(x, y);
 
 }
 

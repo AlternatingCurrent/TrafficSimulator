@@ -1,6 +1,10 @@
 #include "athlete.h"
 #include "pedestrian.h"
 #include <QTimer>
+#include <time.h>
+#include <QCoreApplication>
+#include <QTime>
+using namespace std;
 athlete::athlete(QGraphicsItem * parent)
 {
 
@@ -13,6 +17,7 @@ athlete::athlete(QGraphicsItem * parent)
     maxRange=550;
     distanceTravelled=0;
     speed = 6;
+    setPos(820,250+getSpeed());
 }
 
 athlete::~athlete()
@@ -48,7 +53,26 @@ void athlete::setSpeed(int speed)
 
 int athlete::getSpeed()
 {
-   return speed;
+    return speed;
+}
+
+void athlete::move2(int x, int yPos)
+{
+    setPos(x,y()+20);
+    int posOfXLights = x + 20;
+    while(y() < getMaxRange()){
+             setPos(posOfXLights,this->y()+20);
+             delay();
+             qApp->processEvents();
+           }
+    delete this;
+}
+
+void athlete::delay()
+{
+    QTime dieTime= QTime::currentTime().addMSecs(75);
+        while (QTime::currentTime() < dieTime)
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 //overridding move
 void athlete::move()

@@ -22,7 +22,9 @@ RegularPedestrian::RegularPedestrian(QGraphicsItem *parent)
     maxRange=550;
     distanceTravelled=0;
     speed = 5;
+    setPos(820,250+getSpeed());
  //connect a timer to move
+
 //    QTimer * move_timer = new QTimer(this);
 //    connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
 //    move_timer->start(50);
@@ -59,18 +61,16 @@ int RegularPedestrian::getSpeed()
     return speed;
 }
 
-void RegularPedestrian::testMove()
+void RegularPedestrian::move2(int x, int yPos)
 {
-//    int j=1;
-//    while(j< 10){
 
-//             setPos(500,y()+10);
-//             qDebug()<<"moving" << y();
-//             delay();
-//             qApp->processEvents();
-//             j++;
-//           }
-
+    int posOfXLights = x + 20;
+    while(y() < getMaxRange()){
+             setPos(posOfXLights,y()+20);
+             delay();
+             qApp->processEvents();
+           }
+delete this;
 }
 
 void RegularPedestrian::delay()

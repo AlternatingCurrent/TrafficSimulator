@@ -13,6 +13,8 @@
 #include <QDebug>
 #include "pedestrian.h"
 #include "pedestrianmaker.h"
+#include "regularpedestrian.h"
+#include "babypedestrianadapter.h"
 #include <QTimer>
 using namespace std;
 
@@ -162,18 +164,18 @@ void MainWindow::viewReport()
 void MainWindow::addPedestrian(){
     pedestrianmaker * pedmaker = new pedestrianmaker();
     pedestrian  * ped ;
-    ped =pedmaker->makeRandomPedestrian();
+    ped = pedmaker->makeRandomPedestrian();
     scene->addItem(ped);
-    int posOfXLights = lights->x() + 20;
-    ped->setPos(posOfXLights,lights->y()+ped->getSpeed());
-    while(ped->y() < ped->getMaxRange()){
-             ped->setPos(posOfXLights,ped->y()+20);
-             delay();
-             qApp->processEvents();
-           }
- delete ped;
-}
+    ped->move2(lights->x(), lights->y());
 
+
+    //babypedestrian adapter wont work, babyped does work when called directly, badapter doesnt display on screen
+  // BabyPedestrian * b = new BabyPedestrian();
+//     BabyPedestrianAdapter * ba = new BabyPedestrianAdapter(b);
+//     scene->addItem(ba);
+//     ba->move2(lights->x(), lights->y());
+
+}
 
 void MainWindow::trafficlightsCheck()
 {
@@ -194,3 +196,19 @@ void MainWindow :: delay()
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+
+
+
+
+
+
+
+//    int posOfXLights = lights->x() + 20;
+//    qDebug()<< lights->y();
+//    ped->setPos(posOfXLights,lights->y()+ped->getSpeed());
+//    while(ped->y() < ped->getMaxRange()){
+//             ped->setPos(posOfXLights,ped->y()+20);
+//             delay();
+//             qApp->processEvents();
+//           }
+// delete ped;
