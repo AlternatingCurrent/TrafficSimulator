@@ -19,5 +19,6 @@ void IncreaseSpeedLow :: decision(vector<Vehicle*> vehicles,  Vehicle * currentV
     }
 
 void IncreaseSpeedLow :: doOperation(Vehicle * currentVehicle){
-    currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+   // currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+    emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,newCoOrdinateBasedOnSpeed,currentVehicle->pos().y());
 }

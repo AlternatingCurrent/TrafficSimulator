@@ -8,10 +8,10 @@ carwithtrailer::carwithtrailer(Subject *aVehicle, int width, int height, double 
   setPos(xStartingPos, yStartingPos);
   this->aVehicle = aVehicle;
   this->aVehicle->attach(this);
-  setUp();
+ // setUp();
 }
 
-void carwithtrailer::update(vector<Vehicle *> vehicles){
+void carwithtrailer::update(){
   std::cout << "regular car scan ahead";
 
   //Call Methods
@@ -25,4 +25,11 @@ void carwithtrailer::setUp()
     area = new QGraphicsRectItem(rect,this);
    // area->setPen(QPen(Qt::white));
     area->setPos(x()-30,y()+50);
+}
+
+//Thread setup , correct way to do it, QT documentation is incorrect in subclassing from QThread
+void carwithtrailer::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){
+    //connect the signal emitted from the thread starting to the slot update
+    this->vehicles = vehicles;
+    connect(&cThread,SIGNAL(started()),this,SLOT(update(vehicles)));
 }

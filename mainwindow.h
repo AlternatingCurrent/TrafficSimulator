@@ -20,12 +20,16 @@
 #include <QtGui>
 #include <iostream>
 #include <string>
-
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include "policecar.h"
 #include "regularcar.h"
 #include "subject.h"
 #include "mainwindowstates.h"
 #include <QObject>
+#include <QPen>
+#include <QPixmap>
+
 namespace Ui {
 class MainWindow;
 }
@@ -48,7 +52,9 @@ public:
     void stopSimulation();
     void viewReport();
     void addPedestrian();
-     void delay();
+    void delay();
+    void setUpCarImages(Vehicle * aVehicle);
+
 public slots:
     void trafficlightsCheck();
 private slots:
@@ -64,18 +70,15 @@ private slots:
     void on_addVehicles_currentIndexChanged(const QString &arg1);
 
 private:
-    void setUp();
     Subject * asubject;
     trafficlights * lights;
     Ui::MainWindow *ui;
     static MainWindow mainwindow;
-    std::vector<Vehicle*> vehicles;
-    QGraphicsScene *scene;
-    QGraphicsView * view;
     // State behaviour
     AbstractState *mState;
 
-     bool start_stop;
+    QGraphicsRectItem * area;
+
 };
 
 #endif // MAINWINDOW_H

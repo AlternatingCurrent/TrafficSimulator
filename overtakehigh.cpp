@@ -29,14 +29,16 @@ void OvertakeHigh :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehic
 
     //move back in if you are not collidng with any vehicles on the left
     if((currentVehicle->isOvertaking == true) && (isColliding == false)){
-         currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()-50));
-         currentVehicle->isOvertaking = false;
+      //   currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()-50));
+        emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-50);
+        currentVehicle->isOvertaking = false;
 
     }
 
   }
 
 void OvertakeHigh :: doOperation(Vehicle * currentVehicle){
-        currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()+50));
-        currentVehicle->isOvertaking = true;
+     //   currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()+50));
+       emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+50);
+       currentVehicle->isOvertaking = true;
  }
