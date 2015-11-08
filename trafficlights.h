@@ -6,11 +6,12 @@
 #include <QPoint>
 #include <QObject>
 #include <QString>
+#include "subject.h"
 class trafficlights: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    trafficlights(QGraphicsItem * parent =0);
+    trafficlights(Subject *aVehicle, QGraphicsItem * parent =0);
     double distanceTo(QGraphicsItem * item);
     void cross_road(int pedestrianNo);
     bool trafficLightOn;

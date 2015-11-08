@@ -22,9 +22,9 @@ SimulationFrame::SimulationFrame()
     QPixmap watermark(":/Road.jpg");
     QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
     setBackgroundBrush(QBrush(newPixmap));
-    lights = new trafficlights();
-    lights->setPos(800,250);
-    scene->addItem(lights);
+//    lights = new trafficlights();
+//    lights->setPos(800,250);
+//    scene->addItem(lights);
     vehicleSpawned =0;
     setFixedSize(800,300);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

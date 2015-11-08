@@ -111,8 +111,8 @@ void MainWindow::beginSimulation()
         ui->Aggressiveness->addItem("Low");
         ui->Aggressiveness->addItem("Medium");
         ui->Aggressiveness->addItem("High");
-
-        lights = new trafficlights();
+Subject * aSubject = new Subject();
+        lights = new trafficlights(aSubject);
         lights->setPos(800,250);
         scene->addItem(lights);
 //    addPedestrian(); //this will be cchanged to be called whenever lights are red

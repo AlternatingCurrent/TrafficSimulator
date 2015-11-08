@@ -30,4 +30,12 @@ void Subject::notifyAllVehicles(){
   for(int i =0; i< vehicles.size();i++){
       vehicles.at(i)->update(vehicles);   //Same as update()
   }
+
+
+}
+
+void Subject::traffic_light_notify_all_vehicles(bool isOn)
+{
+
+ //change this when colin updates his vehicle and modify it to let vehicles knwo traffic lights are on
 }

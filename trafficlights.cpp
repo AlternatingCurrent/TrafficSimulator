@@ -13,9 +13,10 @@
 #include "athlete.h"
 #include "pedestrianmaker.h"
 #include "Mainwindow.h"
+#include "subject.h"
 extern SimulationFrame * sim;
 extern MainWindow * mainwindow;
-trafficlights::trafficlights(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
+trafficlights::trafficlights(Subject * aVehicle, QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     setUp();
     QTimer * timer = new QTimer();

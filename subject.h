@@ -13,6 +13,7 @@ public:
     void setState(int state);
     void attach(Vehicle *aVehicle);
     void notifyAllVehicles();
+    void traffic_light_notify_all_vehicles(bool isOn);
 
 private:
     //STD if not using std
