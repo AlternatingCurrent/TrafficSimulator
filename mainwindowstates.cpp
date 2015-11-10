@@ -4,20 +4,6 @@
 using namespace std;
 
 
-//Performance monitoring methods, comment out in release
-void timer::start() {
-    begTime = clock();
-}
-
-unsigned long timer::elapsedTime() {
-    return ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
-}
-
-bool timer::isTimeout(unsigned long seconds) {
-    return seconds >= elapsedTime();
-}
-timer performance_timer;
-
 //Make get's and set
 bool start_stop =0;
 trafficlights * lights;
@@ -153,9 +139,6 @@ Subject * aVehicle = new Subject();
 }
 
 void Setup::startButtonClicked(MainWindow &mWindow, Ui::MainWindow *ui){
-    //Performance monitoring methods, comment out in release
-    performance_timer.start();
-
     setState(mWindow, new Simulation());
 }
 
@@ -257,16 +240,11 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
    //   qApp->processEvents();
    // }
 
-    //Performance monitoring methods, comment out in release
-    unsigned long seconds = 5;
-    if(performance_timer.elapsedTime() >= seconds) {
-        cout<< "\nPerformance Monitoring timed stop \n";
-        stopSimulation(mWindow, ui);
-    }
+
 }
 
 void Simulation::recieveNewVehiclePositions(Vehicle *currentVehicle, int x, int y){
-  cout << x  <<"   " << y << "\n";
+  //cout << x  <<"   " << y << "\n";
   currentVehicle->setPos(x,y);
 }
 

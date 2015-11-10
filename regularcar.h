@@ -3,8 +3,19 @@
 #include "vehicle.h"
 #include "subject.h"
 #include <vector>
+#include <time.h>
 
 using namespace std;
+
+
+class timer {
+    private:
+        unsigned long begTime;
+    public:
+        void start();
+        unsigned long elapsedTime();
+        bool isTimeout(unsigned long seconds);
+};
 
 class RegularCar : public Vehicle
 {
