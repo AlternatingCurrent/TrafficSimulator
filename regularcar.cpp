@@ -62,7 +62,10 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
     context = new StrategyContext(new DecreaseSpeed());
     context->executeStrategyDecision(this->vehicles, this);
   }
+  // Used for performance monitoring
+  timesCalled++;
  }
+
 
 }
 

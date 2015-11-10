@@ -106,6 +106,8 @@ public:
     //Decides when to start and stop the thread
     bool doThread;
 
+    //Keeps a track of how many times this vehicle's update method was called for performance montoring
+    int timesCalled;
 
 signals:
     //Very important, since the main thread is the only one able to

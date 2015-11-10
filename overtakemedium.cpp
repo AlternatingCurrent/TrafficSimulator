@@ -47,6 +47,13 @@ void OverTakeMedium :: doOperation(Vehicle * currentVehicle){
        emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+50);
         emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-50);
         currentVehicle->isOvertaking = true;
+
+
+        //Interceptor code here, need to log the overtaking
+        //First create the context object with the currect speed
+        currentVehicle->cObj = ContextObject(currentVehicle->currentSpeed);
+        //Now pass the context object to the dispatcher to be recorded
+        currentVehicle->dis.callback(&currentVehicle->cObj);
 }
 
 double OverTakeMedium::distanceTo(QGraphicsItem *item, Vehicle * currentVehicle)

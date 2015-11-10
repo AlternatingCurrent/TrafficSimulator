@@ -4,6 +4,20 @@
 using namespace std;
 
 
+//Performance monitoring methods, comment out in release
+void timer::start() {
+    begTime = clock();
+}
+
+unsigned long timer::elapsedTime() {
+    return ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
+}
+
+bool timer::isTimeout(unsigned long seconds) {
+    return seconds >= elapsedTime();
+}
+timer performance_timer;
+
 //Make get's and set
 bool start_stop =0;
 trafficlights * lights;
@@ -18,6 +32,9 @@ QThread bThread;
 QThread cThread;
 QThread dThread;
 
+//Interceptor
+LoggingApp logger = LoggingApp();
+
 AbstractState::~AbstractState()
 {
 }
@@ -31,6 +48,7 @@ void AbstractState::setState(MainWindow &mWindow, AbstractState *state)
 
 Setup::~Setup()
 {
+    logger.createInterceptor();
 }
 
 void Setup::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
@@ -90,8 +108,16 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
       vehicles.push_back(car1);
       vehicles.push_back(car4);
 
+    //Interceptor
+    car1->createDispatcher();
+    car2->createDispatcher();
+    car3->createDispatcher();
+    car4->createDispatcher();
 
-
+    car1->dis.attach(logger.getInterceptor());
+    car2->dis.attach(logger.getInterceptor());
+    car3->dis.attach(logger.getInterceptor());
+    car4->dis.attach(logger.getInterceptor());
 }
 
 void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
@@ -127,6 +153,9 @@ Subject * aVehicle = new Subject();
 }
 
 void Setup::startButtonClicked(MainWindow &mWindow, Ui::MainWindow *ui){
+    //Performance monitoring methods, comment out in release
+    performance_timer.start();
+
     setState(mWindow, new Simulation());
 }
 
@@ -164,13 +193,18 @@ void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // code to stop simulation here
     start_stop = 0;
-    cout << "Stop Simulation";
+    cout << "Stop Simulation\n";
+    int totalTimesCalled = 0;
 
     //Turn off all threads
     for(int i =0; i< vehicles.size();i++){
-    vehicles.at(i)->setThreadStatus(false);
+        totalTimesCalled += vehicles.at(i)->timesCalled;
+        vehicles.at(i)->setThreadStatus(false);
     }
+    // Interceptor code, should be moved to report::viewReport
+    logger.updateTextFile();
 
+    cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
     setState(mWindow,new ReportState());
 
 
@@ -223,7 +257,12 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
    //   qApp->processEvents();
    // }
 
-
+    //Performance monitoring methods, comment out in release
+    unsigned long seconds = 5;
+    if(performance_timer.elapsedTime() >= seconds) {
+        cout<< "\nPerformance Monitoring timed stop \n";
+        stopSimulation(mWindow, ui);
+    }
 }
 
 void Simulation::recieveNewVehiclePositions(Vehicle *currentVehicle, int x, int y){
@@ -266,6 +305,6 @@ void ReportState::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
 }
 
 void ReportState :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
-
+    setState(mWindow, new Simulation());
 }
 

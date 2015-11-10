@@ -15,7 +15,7 @@ public:
     LoggingApp();
     void createInterceptor();
     void updateTextFile();
-    ConcreteInterceptor getInterceptor();
+    ConcreteInterceptor* getInterceptor();
 
 //private:
     ConcreteInterceptor cInterceptor;
