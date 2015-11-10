@@ -92,7 +92,7 @@ void MainWindow::addPedestrian(){
 
 void MainWindow::trafficlightsCheck()
 {
-    qDebug()<<"in lightscheck";
+   // qDebug()<<"in lightscheck";
     if(lights->trafficLightOn == true){
       mState->addPedestrain(*this, ui);//Calls mehod in state
 

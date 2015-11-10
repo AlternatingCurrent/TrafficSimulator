@@ -5,6 +5,7 @@ using namespace std;
 
 
 //Make get's and set
+Subject * asubject = new Subject();
 bool start_stop =0;
 trafficlights * lights;
 QGraphicsScene *scene;
@@ -56,7 +57,7 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
     string aggressiveness;
     string vehicleType;
 
-      Subject * asubject = new Subject();
+//      Subject * asubject = new Subject();
 //      QGraphicsItem * a;
 //      QGraphicsItem * b;
 //      QGraphicsItem * c;
@@ -69,7 +70,7 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 //      Vehicle * car4 = new RegularCar(asubject,50,50,2,1000,450);
       Vehicle * carTry;
       VehicleFactory * vf = new VehicleFactory();
-      carTry = vf->createVehicle("regularcar",1,100,450,asubject);
+      carTry = vf->createVehicle("regularcar",1,100,350,asubject);
       scene->addItem(carTry);
 
 
@@ -268,7 +269,7 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
 //    timer->start(50);
 
     while(TrafficLightsStop == false){
-        qDebug()<< "trafficlights boolean "<<TrafficLightsStop;
+        //qDebug()<< "trafficlights boolean "<<TrafficLightsStop;
         trafficLightsCheck();
         mWindow.delay();
         qApp->processEvents();
@@ -296,7 +297,8 @@ void Simulation::recieveNewVehiclePositions(Vehicle *currentVehicle, int x, int 
 void Simulation::trafficLightsCheck()
 {
     if(lights->trafficLightOn == true){
-        qDebug()<< "in add ped";
+       asubject->setState(1);
+       // qDebug()<< "in add ped";
         pedestrianmaker * pedmaker = new pedestrianmaker();
         pedestrian  * ped ;
         ped =pedmaker->makeRandomPedestrian();
@@ -305,6 +307,7 @@ void Simulation::trafficLightsCheck()
         return;
     }
     else{
+        asubject->setState(0); //trafficlight is off
         return;
     }
 }

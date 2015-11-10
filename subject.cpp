@@ -1,7 +1,7 @@
 #include "subject.h"
 
 #include <iostream>
-
+#include "vehicle.h"
 using namespace std;
 
 Subject::Subject()
@@ -19,20 +19,34 @@ void Subject::setState(int state){
     //1 to begin
     //2 pedestrian crossing
     //3 traffic lights
-    notifyAllVehicles();
+
+
+    if(state==1){
+     notifyAllVehicles(1);
+    }
+    else{
+
+       notifyAllVehicles(0);
+    }
 }
 
 void Subject::attach(Vehicle * aVehicle){
    vehicles.push_back(aVehicle);
 }
 
-void Subject::notifyAllVehicles(){
+void Subject::notifyAllVehicles(int on){
+if(on==1){
   for(int i =0; i< vehicles.size();i++){
-    //  vehicles.at(i)->update(vehicles);   //Same as update()
-  }
-
-
+   vehicles.at(i)->updateTrafficLightsSignal(true);  //Same as update()
+  }}
+else{
+    for(int i =0; i< vehicles.size();i++){
+     vehicles.at(i)->updateTrafficLightsSignal(false);  //Same as update()
+    }}
 }
+
+
+
 
 void Subject::traffic_light_notify_all_vehicles(bool isOn)
 {

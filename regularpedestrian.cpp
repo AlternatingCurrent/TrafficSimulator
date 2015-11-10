@@ -88,7 +88,7 @@ void RegularPedestrian::move()
    double dx = STEP_SIZE * qCos(qDegreesToRadians(theta));
    if(y()< maxRange ){
    setPos(x(), y()+speed);
-   qDebug()<< "Moving";
+  // qDebug()<< "Moving";
    }
    else{
        delete this;

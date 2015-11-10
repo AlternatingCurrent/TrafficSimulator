@@ -78,7 +78,6 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if(trafficLightsOn == true && stopIfNearLights ==true){
 //stop
-
   }
   else{
   //Setting up the interchangable strategy context object

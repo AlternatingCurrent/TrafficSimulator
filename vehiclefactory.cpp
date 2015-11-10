@@ -97,6 +97,7 @@ Vehicle *VehicleFactory::createVehicle(QString type, int Aggressiveness, int xPo
     if(type == redcar){
        vehicle = new RegularCar(subject,50,50,Aggressiveness,xPosition,yPosition);
        vehicle= setup(vehicle,"carRedRight.png");
+       vehicle->setPos(xPosition, yPosition);
        return vehicle;
     }
     else if(type == policecar){

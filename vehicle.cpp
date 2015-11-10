@@ -1,6 +1,7 @@
 #include "vehicle.h"
 #include <string>
 #include <iostream>
+#include <QDebug>
 #include <QGraphicsPixmapItem>
 using namespace std;
 
@@ -21,6 +22,13 @@ Vehicle::~Vehicle()
 
 }
 
+void Vehicle::updateTrafficLightsSignal(bool trafficlights_On)
+{
+
+  // qDebug()<<"in here trafficlightsSignal is on is "<< trafficlights_On;
+    trafficLightsOn = trafficlights_On;
+    qDebug()<<"In the vehcile class and trafficlights is on is "<< trafficLightsOn ;
+}
 
 void Vehicle::createDispatcher()
 {
@@ -34,3 +42,6 @@ bool Vehicle::getThreadStatus(){
 void Vehicle::setThreadStatus(bool status){
    doThread = status;
 }
+
+
+
