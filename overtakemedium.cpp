@@ -33,15 +33,12 @@ void OverTakeMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVeh
     }
     //We can move back in if we are no longer colliding with any vehicles
     if((currentVehicle->isOvertaking == true) && (isColliding == false) ){ //make sure not colliding down the line
-         currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()-50));
+         //currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()-50));
+         emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-50);
          currentVehicle->isOvertaking = false;
-
-
-
-
-
     }
   }
+
 
 void OverTakeMedium :: doOperation(Vehicle * currentVehicle){
        emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+50);
