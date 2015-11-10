@@ -1,6 +1,6 @@
 #include "mainwindowstates.h"
 #include <iostream>
-
+#include "vehiclefactory.h"
 using namespace std;
 
 
@@ -42,53 +42,83 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 {
 
      vehicleThreads.push_back(&aThread);
-     vehicleThreads.push_back(&bThread);
-     vehicleThreads.push_back(&cThread);
-     vehicleThreads.push_back(&dThread);
+//     vehicleThreads.push_back(&bThread);
+//     vehicleThreads.push_back(&cThread);
+//     vehicleThreads.push_back(&dThread);
 
     string aggressiveness;
     string vehicleType;
 
       Subject * asubject = new Subject();
-      QGraphicsItem * a;
-      QGraphicsItem * b;
-      QGraphicsItem * c;
-      QGraphicsItem * d;
+//      QGraphicsItem * a;
+//      QGraphicsItem * b;
+//      QGraphicsItem * c;
+//      QGraphicsItem * d;
     //  Vehicle * aCar = new PoliceCar(asubject,50,50,3,a);
 
-      Vehicle * car2 = new RegularCar(asubject,50,50,3,100,450, a);
-      Vehicle * car1 = new RegularCar(asubject,50,50,1,150,450, b);
-      Vehicle * car3 = new RegularCar(asubject,50,50,2,0,450, c);
-      Vehicle * car4 = new RegularCar(asubject,50,50,2,1000,450, d);
+//      Vehicle * car2 = new RegularCar(asubject,50,50,3,100,450);
+//      Vehicle * car1 = new RegularCar(asubject,50,50,1,150,450);
+//      Vehicle * car3 = new RegularCar(asubject,50,50,2,0,450);
+//      Vehicle * car4 = new RegularCar(asubject,50,50,2,1000,450);
+      Vehicle * carTry;
+      VehicleFactory * vf = new VehicleFactory();
+      carTry = vf->createVehicle("regularcar",1,100,450,asubject);
+      scene->addItem(carTry);
+
+
+
+
+
+
+
 
       //Can no longer set up the images and rectangles from Vehicle as the threads all cannot concurrently access
       //the ui, only the main thread, and makes less sense to use emitting frtom vehcile over setyp in Mainwindw
 
-      mWindow.setUpCarImages(car1);
-      mWindow.setUpCarImages(car2);
-      mWindow.setUpCarImages(car3);
-      mWindow.setUpCarImages(car4);
-
-      scene->addItem(car2);
-      scene->addItem(car1);
-      scene->addItem(car3);
-      scene->addItem(car4);
 
 
 
-      car3->setPos(1000, 400);
-      car1->setPos(150,450);
-      car2->setPos(0,450);
-      car3->setPos(100,450);
+//      mWindow.setUpCarImages(car1);
+//      mWindow.setUpCarImages(car2);
+//      mWindow.setUpCarImages(car3);
+//      mWindow.setUpCarImages(car4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//      scene->addItem(car2);
+//      scene->addItem(car1);
+//      scene->addItem(car3);
+//      scene->addItem(car4);
+
+
+
+//      car3->setPos(1000, 400);
+//      car1->setPos(150,450);
+//      car2->setPos(0,450);
+//      car3->setPos(100,450);
 
       aggressiveness = ui->Aggressiveness->currentText().toStdString();
       vehicleType    = ui->addVehicles->currentText().toStdString();
 
-
-      vehicles.push_back(car2);
-      vehicles.push_back(car3);
-      vehicles.push_back(car1);
-      vehicles.push_back(car4);
+vehicles.push_back(carTry);
+//      vehicles.push_back(car2);
+//      vehicles.push_back(car3);
+//      vehicles.push_back(car1);
+//      vehicles.push_back(car4);
 
 
 
@@ -100,9 +130,9 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
     std::cout<< "Running simulation " << std::endl;
 
 
-    //QTimer * timer = new QTimer();
-    //connect(timer,SIGNAL(timeout()),MainWindow,SLOT(trafficlightsCheck()));
-    //timer->start(500);
+//    QTimer * timer = new QTimer();
+//    connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
+//    timer->start(500);
 
     QPixmap roadImage(":/Road.jpg");
         ui->Aggressiveness->setVisible(false);
@@ -116,7 +146,7 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 
         QPixmap watermark(":/Road.jpg");
         QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
-Subject * aVehicle = new Subject();
+        Subject * aVehicle = new Subject();
         scene = new QGraphicsScene();
         ui->mainSimulation->setScene(scene);
         scene->setBackgroundBrush(QBrush(newPixmap));
@@ -230,6 +260,17 @@ void Simulation::recieveNewVehiclePositions(Vehicle *currentVehicle, int x, int 
   cout << x  <<"   " << y << "\n";
   currentVehicle->setPos(x,y);
 }
+
+//void Simulation::trafficLightsCheck()
+//{
+//    if(lights->trafficLightOn == true){
+//     // addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui);
+//        return;
+//    }
+//    else{
+//        return;
+//    }
+//}
 
 ReportState::~ReportState()
 {

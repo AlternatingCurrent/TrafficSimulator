@@ -41,7 +41,7 @@ public:
     virtual void viewReport(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual void startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual void addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui );
-    virtual ~Setup(); 
+    virtual ~Setup();
 
 };
 
