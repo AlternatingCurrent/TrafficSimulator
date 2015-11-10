@@ -7,6 +7,26 @@
 #include <QDebug>
 #include <iostream>
 #include <QPen>
+#include <iostream>
+
+using namespace std;
+
+
+
+//Performance monitoring methods, comment out in release
+void timer::start() {
+    begTime = clock();
+}
+
+unsigned long timer::elapsedTime() {
+    return ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
+}
+
+bool timer::isTimeout(unsigned long seconds) {
+    return seconds >= elapsedTime();
+}
+timer performance_timer;
+
 
 RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression,xStartingPos,yStartingPos)
 {
@@ -30,6 +50,9 @@ void RegularCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){
 //pass data through this siganl and slot therefore we make a copy in do thread setup
 
 void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
+
+    //Performance monitoring methods, comment out in release
+    performance_timer.start();
 
     //Only execute the following when the thread status is active
   while(this->getThreadStatus() == true){
@@ -64,25 +87,19 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   }
   // Used for performance monitoring
   timesCalled++;
+
+  //Performance monitoring methods, comment out in release
+  unsigned long seconds = 5;
+  cout << "\nelapsed time: "<<performance_timer.elapsedTime() << endl;
+  if(performance_timer.elapsedTime() >= seconds) {
+      cout<< "\nPerformance Monitoring timed stop \n";
+      //Turn off all threads
+      this->setThreadStatus(false);
+      cout << "Total times vehicals have been called: " << timesCalled << "\n";
+  }
+
  }
 
 
 }
-
-void RegularCar::setUp()
-{
-        QPixmap watermark(":/carRedRight.png"); //changed
-        QPixmap newPixmap = watermark.scaled(QSize(50,50),  Qt::KeepAspectRatio);
-        setPixmap(newPixmap);
-        //QRectF rect(-70,-225,700,170);
-        QRectF rect(0,-60,200,100);
-        //create qgraphicsRectItem
-        //this->boundingRect().setPen(QPen(Qt::white));
-        area = new QGraphicsRectItem(rect,this);
-        area->setPen(QPen(Qt::white));
-        area->setPos(x()-30,y()+25);
-        //this->boundingRect() = area;
-       // area->hide();
-}
-
 

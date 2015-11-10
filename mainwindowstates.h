@@ -7,7 +7,7 @@
 #include "loggingapp.h"
 #include <QThread>
 #include <QObject>
-#include <time.h>
+
 //class MainWindowStates
 //{
 //public:
@@ -15,17 +15,6 @@
 //};
 
 class MainWindow;
-
-
-class timer {
-    private:
-        unsigned long begTime;
-    public:
-        void start();
-        unsigned long elapsedTime();
-        bool isTimeout(unsigned long seconds);
-};
-
 
 
 //Qbject for signals and slots

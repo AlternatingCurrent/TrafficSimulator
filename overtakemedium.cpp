@@ -42,7 +42,6 @@ void OverTakeMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVeh
 
 void OverTakeMedium :: doOperation(Vehicle * currentVehicle){
        emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+50);
-        emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-50);
         currentVehicle->isOvertaking = true;
 
 
