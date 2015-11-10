@@ -12,10 +12,11 @@ public:
     VehicleFactory();
     Vehicle *createVehicle(QString type);
     Vehicle *createRandomVehicle(); //random aggressivness
-    Vehicle *createVehicle(QString type, QString Aggressiveness, QString startingSpeed);
+    Vehicle *createVehicle(QString type, int Aggressiveness, int xPosition, int yPosition, Subject *subject);
     ~VehicleFactory();
 private:
     Subject * asubject;
+    Vehicle * setup(Vehicle * vehicle, QString type);
 };
 
 #endif // VEHICLEFACTORY_H

@@ -72,7 +72,11 @@ void MainWindow::addVehicle()
 
 void MainWindow::runSimulation()
 {
+
+
     mState->runSimulation(*this,ui);
+
+
 }
 
 
@@ -88,6 +92,7 @@ void MainWindow::addPedestrian(){
 
 void MainWindow::trafficlightsCheck()
 {
+    qDebug()<<"in lightscheck";
     if(lights->trafficLightOn == true){
       mState->addPedestrain(*this, ui);//Calls mehod in state
 

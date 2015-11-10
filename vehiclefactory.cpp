@@ -66,7 +66,7 @@ Vehicle *VehicleFactory::createRandomVehicle()
 //    RandomGenerator * ranGen = new RandomGenerator(1,3);
 //    int randomNumber =0;
 //    randomNumber = ranGen->createRandomNumber();
-    RandomGenerator * ranGen;
+      RandomGenerator * ranGen;
       int randomNumber =0;
       randomNumber = ranGen->createRandomNumber(1,3);
 
@@ -89,13 +89,49 @@ Vehicle *VehicleFactory::createRandomVehicle()
 }
 
 
-Vehicle *VehicleFactory::createVehicle(QString type, QString Aggressiveness, QString startingSpeed)  //obviously need to decide exactly what we can do here
+Vehicle *VehicleFactory::createVehicle(QString type, int Aggressiveness, int xPosition, int yPosition, Subject * subject)  //obviously need to decide exactly what we can do here
 {
+  //QGraphicsItem * d = new QGraphicsItem();
+    Vehicle * vehicle;
+    QString redcar ="regularcar", policecar = "policecar", cartrailer = "carwithtrailer";
+    if(type == redcar){
+       vehicle = new RegularCar(subject,50,50,Aggressiveness,xPosition,yPosition);
+       vehicle= setup(vehicle,"carRedRight.png");
+       return vehicle;
+    }
+    else if(type == policecar){
+
+         vehicle = new PoliceCar(subject,50,50,Aggressiveness,xPosition,yPosition);
+         vehicle= setup(vehicle,"police.png");
+         return vehicle;
+
+    }
+    else if(type == cartrailer){
+
+        vehicle = new carwithtrailer(subject,50,50,Aggressiveness,xPosition,yPosition);
+        vehicle= setup(vehicle,"cartrailer.png");
+        return vehicle;
+    }
+    else{
+    }
 
 }
 
 VehicleFactory::~VehicleFactory()
 {
 
+}
+
+Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type)
+{
+
+    QPixmap watermark(":/"+type); //changed
+    QPixmap newPixmap = watermark.scaled(QSize(50,50),  Qt::KeepAspectRatio);
+    vehicle->setPixmap(newPixmap);
+    QRectF rect(0,-60,200,100);
+    vehicle->area = new QGraphicsRectItem(rect,vehicle);
+    //vehicle-> area->setPen(QPen(Qt::white));
+    vehicle-> area->setPos(vehicle->x()-30,vehicle->y()+25);
+    return vehicle;
 }
 

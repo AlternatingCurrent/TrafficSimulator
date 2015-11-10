@@ -58,6 +58,7 @@ pedestrian *pedestrianmaker::makePedestrian(QString pedestrianType)
         QPixmap watermark(":/baby.png");
         QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
         ped->setPixmap(newPixmap);
+        ped->setPos(820,250);
         return ped;
 
     }

@@ -44,7 +44,7 @@ public:
     virtual void viewReport(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual void startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual void addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui );
-    virtual ~Setup(); 
+    virtual ~Setup();
 
 };
 
@@ -61,10 +61,12 @@ public:
     virtual void addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual ~Simulation();
 
+
 public slots:
 
     //To update vehciles positions as they are in separate threads
     void recieveNewVehiclePositions(Vehicle * currentVehicle,int x, int y);
+     void trafficLightsCheck();
 
 };
 
