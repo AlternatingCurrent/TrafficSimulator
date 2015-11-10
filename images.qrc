@@ -11,5 +11,6 @@
         <file>carRedRight.png</file>
         <file>baby.png</file>
         <file>RoadSized.png</file>
+        <file>road_new.png</file>
     </qresource>
 </RCC>

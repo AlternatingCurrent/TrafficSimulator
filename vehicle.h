@@ -46,6 +46,7 @@ public:
 
     //Delete here as setup has moved
      QGraphicsRectItem * area;
+     QGraphicsRectItem * area_to_check_for_overtaking;
 
     //Start and stop the threads
     bool getThreadStatus();

@@ -130,7 +130,9 @@ Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type)
     QPixmap newPixmap = watermark.scaled(QSize(50,50),  Qt::KeepAspectRatio);
     vehicle->setPixmap(newPixmap);
     QRectF rect(0,-60,200,100);
+    QRectF rect_for_overtaking(0,50,700,30);
     vehicle->area = new QGraphicsRectItem(rect,vehicle);
+    vehicle->area_to_check_for_overtaking = new QGraphicsRectItem(rect_for_overtaking, vehicle);
     //vehicle-> area->setPen(QPen(Qt::white));
     vehicle-> area->setPos(vehicle->x()-30,vehicle->y()+25);
     return vehicle;

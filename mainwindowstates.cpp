@@ -160,12 +160,13 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
         ui->Aggressiveness->addItem("Medium");
         ui->Aggressiveness->addItem("High");
 
-        QPixmap watermark(":/Road.jpg");
+        QPixmap watermark(":/road_new.png");
         QPixmap newPixmap = watermark.scaled(QSize(800,600),  Qt::KeepAspectRatio);
+
         Subject * aVehicle = new Subject();
         scene = new QGraphicsScene();
         ui->mainSimulation->setScene(scene);
-        scene->setBackgroundBrush(QBrush(newPixmap));
+        scene->setBackgroundBrush(QBrush(QImage(":/road_new.png")/*QBrush(newPixmap)*/));
         lights = new trafficlights(aVehicle );
         lights->setPos(800,250);
         scene->addItem(lights);

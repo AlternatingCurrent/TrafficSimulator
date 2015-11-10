@@ -62,27 +62,27 @@ double OverTakeMedium::distanceTo(QGraphicsItem *item, Vehicle * currentVehicle)
 int OverTakeMedium::aquire_and_check(Vehicle * currentVehicle) //should only be called when the vehicle is in other lane to check whether they should move back in or not
 {
 
- QList<QGraphicsItem *> colliding_items = currentVehicle->area->collidingItems();
+ QList<QGraphicsItem *> colliding_items = currentVehicle->area_to_check_for_overtaking->collidingItems();
 
  if (colliding_items.size() == 1){
 
      return 1;
     }
 
-     double closest_dist = 500; //distance to check ahead whether its safe to overtake
+     double closest_dist = 500; //distance to check ahead whether its safe to overtake ^^ this may have to be adjusted this number
      QPointF closest_pt = QPointF(0,0);
      for (size_t i = 0, n = colliding_items.size(); i < n; i++){
          Vehicle * vehicle = dynamic_cast<Vehicle *>(colliding_items[i]);
          if (vehicle){
              double this_dist = distanceTo(vehicle, currentVehicle);
-             if(this_dist < closest_dist) //do not overtake it is unsafe
+             if(this_dist > closest_dist || (vehicle->yStartingPos == currentVehicle->yStartingPos)) //checking to see if its a car in front and its overtaking
              {
 
-                 return 0;
+                 return 1; //overtake;
              }
              else{
 
-                 return 1; //overtake
+                 return 0;
              }
          }
      }
@@ -91,17 +91,17 @@ int OverTakeMedium::aquire_and_check(Vehicle * currentVehicle) //should only be 
 bool check_whether_to_check_aquire_and_target(Vehicle *currentVehicle)
 {
 
-    QList<QGraphicsItem *> colliding_items = currentVehicle->area->collidingItems();
-        double closest_dist = 500; //distance to check ahead whether its safe to overtake
-        QPointF closest_pt = QPointF(0,0);
-        for (size_t i = 0, n = colliding_items.size(); i < n; i++){
-            Vehicle * vehicle = dynamic_cast<Vehicle *>(colliding_items[i]);
-            if (vehicle->pos().y() > currentVehicle->pos().y() ){ //check on the y axis if its to the right
-         //^^ might have to change this y might have to be less than not sure tb tested
-                //then there is a vehicle to the right so do not check to overtake
-                return false;
-            }
-        }
+//    QList<QGraphicsItem *> colliding_items = currentVehicle->area->collidingItems();
+//        double closest_dist = 500; //distance to check ahead whether its safe to overtake
+//        QPointF closest_pt = QPointF(0,0);
+//        for (size_t i = 0, n = colliding_items.size(); i < n; i++){
+//            Vehicle * vehicle = dynamic_cast<Vehicle *>(colliding_items[i]);
+//            if (vehicle->pos().y() > currentVehicle->pos().y() ){ //check on the y axis if its to the right
+//         //^^ might have to change this y might have to be less than not sure tb tested
+//                //then there is a vehicle to the right so do not check to overtake
+//                return false;
+//            }
+//        }
 }
 
 
