@@ -17,18 +17,6 @@ void PoliceCar::update(){
    //when the interceptor logs this
 }
 
-void PoliceCar::setUp()
-{
-
-    QPixmap watermark(":/policeCar.png");
-    QPixmap newPixmap = watermark.scaled(QSize(100,100),  Qt::KeepAspectRatio);
-    setPixmap(newPixmap);
-    QRectF rect(-70,-225,700,170);
-    area = new QGraphicsRectItem(rect,this);
-   // area->setPen(QPen(Qt::white));
-    area->setPos(x()-30,y()+50);
-    area->hide();
-}
 
 //Thread setup , correct way to do it, QT documentation is incorrect in subclassing from QThread
 void PoliceCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){

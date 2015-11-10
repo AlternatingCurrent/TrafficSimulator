@@ -15,6 +15,7 @@ void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * cu
 
 
        for(int i =0; i< vehicles.size(); i++){
+           //if thw vehicle is colliding with the vehicle in front and they are on the same road && it is not the current vehicle
            if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (currentVehicle->pos().y() == vehicles.at(i)->pos().y())
               && (currentVehicle->pos() !=vehicles.at(i)->pos())){
                collidesWithItemInFront = true;
@@ -22,7 +23,7 @@ void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * cu
            }
 
        }
-        //Add a degree of 10 onto the x axis for every time they do not exceed their speed limit
+        //Add a 10KMPH onto the x axis for every time they do not exceed their speed limit
        if(currentVehicle->currentSpeed <= currentVehicle->HighAggressiveTopSpeed && collidesWithItemInFront == false){
           newCoOrdinateBasedOnSpeed = (currentVehicle->pos().x()) + ((currentVehicle->currentSpeed += 10) /10);
           doOperation(currentVehicle);

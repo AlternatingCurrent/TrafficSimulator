@@ -36,9 +36,6 @@ public:
     //Need a copy for each thread
     vector <Vehicle*> vehicles;
 
-
-
-
     //NB
     //Because we cannot pass data when we start the thread, we need to pass
     //the vehicles which will be used into the vehicle class into a thread setup class, rather than passing them
@@ -47,23 +44,8 @@ public:
     virtual void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles) = 0;
 
 
-    //virtual void increaseSpeed(); //Algorithm to inc/dec speed of the currentvehicle be it car, motorbioke etc.
-    //virtual void decreaseSpeed();
-
     //Delete here as setup has moved
      QGraphicsRectItem * area;
-
-    //general functions of a vehicle
-    //reduce code duplication through inheritance
-    //if we need any other functionality we can just inmplement it in the subclasses
-    virtual void setUp();
-    void speedUp();
-    void slowDown();
-    void overTake();
-
-    bool decisionSlowDown();
-    bool decisionSpeedUp();
-    bool decisionOverTake();
 
     //Start and stop the threads
     bool getThreadStatus();
@@ -77,8 +59,6 @@ public:
     enum vehcileAttributes {HeightOfVehicle, WidthOfCar};
     enum Aggressiveness    {Low = 1 , Medium = 2, High = 3};
     enum topSpeeds         {LowAggressiveTopSpeed = 60, MediumAggressiveTopSpeed = 100, HighAggressiveTopSpeed = 160};
-    //Aggrassive drivers will still try and increase speed/overtake in a smallopening
-    //and respectively non-aggresive drivers will be more cautious
     enum Distances         {SmallOpening = 30, MediumOpening = 60, LargeOpening = 100, OverTakingDistance = 200};
     //OverTakingRange = Average distance from oncomming traffic that somebody would overtake
 
