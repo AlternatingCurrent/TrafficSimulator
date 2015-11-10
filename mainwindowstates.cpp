@@ -39,7 +39,7 @@ Setup::~Setup()
 
 void Setup::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
 {
-    // code to add road here
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Your message here Aaron");
 }
 
 void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)

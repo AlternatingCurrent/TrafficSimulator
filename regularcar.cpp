@@ -88,7 +88,7 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   // Used for performance monitoring
   timesCalled++;
 
-  //Performance monitoring methods, comment out in release
+/*  //Performance monitoring methods, comment out in release
   unsigned long seconds = 5;
   cout << "\nelapsed time: "<<performance_timer.elapsedTime() << endl;
   if(performance_timer.elapsedTime() >= seconds) {
@@ -96,7 +96,8 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
       //Turn off all threads
       this->setThreadStatus(false);
       cout << "Total times vehicals have been called: " << timesCalled << "\n";
-  }
+
+  }*/
 
  }
 

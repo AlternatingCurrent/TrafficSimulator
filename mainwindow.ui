@@ -61,7 +61,7 @@
      <string>Outcome</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="reportBox">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -179,7 +179,7 @@
      <x>0</x>
      <y>0</y>
      <width>1905</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
