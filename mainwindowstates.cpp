@@ -17,7 +17,7 @@ QThread aThread;
 QThread bThread;
 QThread cThread;
 QThread dThread;
-
+bool TrafficLightsStop;
 AbstractState::~AbstractState()
 {
 }
@@ -192,6 +192,7 @@ void Simulation::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 }
 void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
+     TrafficLightsStop = true;
     // code to stop simulation here
     start_stop = 0;
     cout << "Stop Simulation";
@@ -221,6 +222,7 @@ void Simulation::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
 
 void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
     start_stop = 1;
+     TrafficLightsStop == false;
     cout << "Simulation in Class Simulation";
 
 
@@ -241,7 +243,17 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
     vehicleThreads.at(i)->start();
     }
 
+//    QTimer * timer = new QTimer();
+//    connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
+//    timer->start(50);
 
+    while(TrafficLightsStop == false){
+        qDebug()<< "trafficlights boolean "<<TrafficLightsStop;
+        trafficLightsCheck();
+        mWindow.delay();
+        qApp->processEvents();
+
+    }
     //***************************OLD WAY****************************
 
    // while(start_stop){
@@ -261,16 +273,21 @@ void Simulation::recieveNewVehiclePositions(Vehicle *currentVehicle, int x, int 
   currentVehicle->setPos(x,y);
 }
 
-//void Simulation::trafficLightsCheck()
-//{
-//    if(lights->trafficLightOn == true){
-//     // addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui);
-//        return;
-//    }
-//    else{
-//        return;
-//    }
-//}
+void Simulation::trafficLightsCheck()
+{
+    if(lights->trafficLightOn == true){
+        qDebug()<< "in add ped";
+        pedestrianmaker * pedmaker = new pedestrianmaker();
+        pedestrian  * ped ;
+        ped =pedmaker->makeRandomPedestrian();
+        scene->addItem(ped);
+        ped->move2(lights->x(), lights->y());
+        return;
+    }
+    else{
+        return;
+    }
+}
 
 ReportState::~ReportState()
 {

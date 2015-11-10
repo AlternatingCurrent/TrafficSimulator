@@ -58,10 +58,12 @@ public:
     virtual void addPedestrain(MainWindow &mWindow,Ui::MainWindow * ui );
     virtual ~Simulation();
 
+
 public slots:
 
     //To update vehciles positions as they are in separate threads
     void recieveNewVehiclePositions(Vehicle * currentVehicle,int x, int y);
+     void trafficLightsCheck();
 
 };
 

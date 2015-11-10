@@ -73,9 +73,7 @@ void MainWindow::addVehicle()
 void MainWindow::runSimulation()
 {
 
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
-    timer->start(50);
+
     mState->runSimulation(*this,ui);
 
 
