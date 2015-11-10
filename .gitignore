@@ -52,3 +52,5 @@ TrafficSimulator.pro.user
 unit_tests/test_LoggingApp/test_LoggingApp.pro.user.b75e118
 TrafficSimulator.pro.user
 *.user
+*.user
+*.user
