@@ -28,7 +28,7 @@ void Subject::attach(Vehicle * aVehicle){
 
 void Subject::notifyAllVehicles(){
   for(int i =0; i< vehicles.size();i++){
-      vehicles.at(i)->update(vehicles);   //Same as update()
+    //  vehicles.at(i)->update(vehicles);   //Same as update()
   }
 
 

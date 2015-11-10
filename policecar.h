@@ -15,11 +15,12 @@ class PoliceCar : public Vehicle
     Q_OBJECT
 public:
     PoliceCar(Subject *aVehicle,int width, int height, double aggression,int xStartingPos, int yStartingPos,QGraphicsItem *parent =0);
-    void update(vector<Vehicle*> vehicles);
+    void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles);
     void setUp();
 //signals:
 
-//public slots:
+public slots:
+    void update();
 };
 
 #endif // POLICECAR_H

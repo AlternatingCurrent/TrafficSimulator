@@ -116,7 +116,7 @@ void trafficlights::traffic_light_timer()
     if(has_vehicle == false)
     {
         trafficLightOn = true;
-        cross_road(1);
+      //  cross_road(1);
            //here I want to send a signal to every vehicle object in the are i specified informing them that the light is red
     }
     setPixmap(QPixmap(":/tlRed.png"));

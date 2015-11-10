@@ -11,12 +11,12 @@ class carwithtrailer : public Vehicle
 {
 public:
     carwithtrailer(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent =0 );
-    //Dont need update() here as it is virtual() just provide implementation
-    void update(vector <Vehicle*> vehicles);
+    void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles);
     void setUp();
 //signals:
 
-//public slots:
+public slots:
+    void update();
 };
 
 

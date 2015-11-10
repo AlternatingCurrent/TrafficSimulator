@@ -13,10 +13,12 @@ IncreaseSpeedAggressive::IncreaseSpeedAggressive()
 void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * currentVehicle){
        bool collidesWithItemInFront = false;
 
+
        for(int i =0; i< vehicles.size(); i++){
            if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (currentVehicle->pos().y() == vehicles.at(i)->pos().y())
               && (currentVehicle->pos() !=vehicles.at(i)->pos())){
                collidesWithItemInFront = true;
+
            }
 
        }
@@ -32,6 +34,6 @@ void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * cu
     }
 
 void IncreaseSpeedAggressive::doOperation(Vehicle * currentVehicle){
-        //Update ui with new co-ordinates
-        currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+      // currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+       emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,newCoOrdinateBasedOnSpeed,currentVehicle->pos().y());
     }

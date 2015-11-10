@@ -1,6 +1,5 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
-#include <QThread>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
 #include "dispatcher.h"
@@ -33,24 +32,16 @@ public:
     virtual ~Vehicle();
     Subject * aVehicle;
 
-    //Need a copy for each thread
-    vector <Vehicle*> vehicles;
+    //Update will act as the vehicles scan method
+    //Problems with vtables otherwise
+    //Don't need to be virtual only update as update is part of observer
+    //Who dosn't know what type of vehicle until runtime i.e dynamic binding
 
+    virtual void update(vector <Vehicle*> vehicles) = 0;
 
-
-
-    //NB
-    //Because we cannot pass data when we start the thread, we need to pass
-    //the vehicles which will be used into the vehicle class into a thread setup class, rather than passing them
-    //to the update method through a pointer, i.e. each thread needs its own deep copy of the vehicles
-    //to prevent any race conditions or crashes
-    virtual void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles) = 0;
-
-
+    void DoThreadSetup(QThread &cThread);
     //virtual void increaseSpeed(); //Algorithm to inc/dec speed of the currentvehicle be it car, motorbioke etc.
     //virtual void decreaseSpeed();
-
-    //Delete here as setup has moved
      QGraphicsRectItem * area;
 
     //general functions of a vehicle
@@ -65,9 +56,8 @@ public:
     bool decisionSpeedUp();
     bool decisionOverTake();
 
-    //Start and stop the threads
-    bool getThreadStatus();
-    void setThreadStatus(bool status);
+    //Returns positions of vehicles around its field of view
+    //string viewFieldOfView();
 
 
     //***********VARIABLES*****************:
@@ -113,15 +103,7 @@ signals:
     //the main window, unlike previously, we updated the positions from the strategy classes
     //therefore we will call the vehicles dispatch vehicle postions to update the ui instead
     void dispatchNewVehiclePositions(Vehicle * currentVehicle,int x, int y);
-
-public slots:
-
-    //Update will act as the vehicles scan method
-    //Problems with vtables otherwise
-    //Don't need to be virtual only update as update is part of observer
-    //Who dosn't know what type of vehicle until runtime i.e dynamic binding
-
-    virtual void update() = 0;
+//public slots:
 };
 
 #endif // VEHICLE_H

@@ -63,3 +63,13 @@ void Vehicle::setUp()
 {
 
 }
+
+
+
+bool Vehicle::getThreadStatus(){
+    return doThread;
+}
+
+void Vehicle::setThreadStatus(bool status){
+   doThread = status;
+}

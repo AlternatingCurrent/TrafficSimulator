@@ -17,7 +17,8 @@ void IncreaseSpeedMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * curre
 
     }
 
-       if((currentVehicle->currentSpeed <= currentVehicle->MediumAggressiveTopSpeed) && (currentVehicle->currentSpeed <=  currentVehicle->speedLimit) && collidesWithItemInFront == false){
+       if((currentVehicle->currentSpeed <= currentVehicle->MediumAggressiveTopSpeed) && (currentVehicle->currentSpeed <=  currentVehicle->speedLimit)
+           && collidesWithItemInFront == false){
            newCoOrdinateBasedOnSpeed = (currentVehicle->pos().x()) + ((currentVehicle->currentSpeed += 10) /10);
            doOperation(currentVehicle);
      }else{
@@ -28,5 +29,6 @@ void IncreaseSpeedMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * curre
     }
 
 void IncreaseSpeedMedium :: doOperation(Vehicle * currentVehicle){
-    currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+   // currentVehicle->setPos(newCoOrdinateBasedOnSpeed, (currentVehicle->pos().y()));
+    emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,newCoOrdinateBasedOnSpeed,currentVehicle->pos().y());
 }

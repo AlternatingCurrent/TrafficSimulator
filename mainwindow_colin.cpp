@@ -123,4 +123,3 @@ void MainWindow::setUpCarImages(Vehicle * aVehicle){
    // area->hide();
 
 }
-
