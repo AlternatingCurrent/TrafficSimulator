@@ -106,7 +106,7 @@ void MainWindow::trafficlightsCheck()
 //Stop vehicles from accelerating too quickly
 void MainWindow :: delay()
 {
-    QTime dieTime= QTime::currentTime().addMSecs(75);
+    QTime dieTime= QTime::currentTime().addMSecs(100);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

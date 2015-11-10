@@ -11,9 +11,9 @@ void LoggingApp::createInterceptor()
     cInterceptor = ConcreteInterceptor(&speed_time_values);
 }
 
-ConcreteInterceptor LoggingApp::getInterceptor()
+ConcreteInterceptor *LoggingApp::getInterceptor()
 {
-    return cInterceptor;
+    return &cInterceptor;
 }
 
 void LoggingApp::updateTextFile()

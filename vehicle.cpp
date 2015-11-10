@@ -12,6 +12,7 @@ Vehicle::Vehicle(int width, int height, int aggression, int xStartingPos, int yS
     speedLimit = 120;
     this->xStartingPos = xStartingPos;
     this->yStartingPos = yStartingPos;
+    timesCalled = 0;
 
 }
 
