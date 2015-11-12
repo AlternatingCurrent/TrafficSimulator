@@ -19,6 +19,8 @@ using namespace std;
 
 #include "StrategyContext.h";
 
+class trafficlights;
+
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
 class Vehicle: public QObject, public QGraphicsPixmapItem{
@@ -29,7 +31,7 @@ public:
 
     //***********METHODS*********************:
 
-    Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, QGraphicsItem * parent=0); //changed
+    Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, string direction, QGraphicsItem * parent=0); //changed
     virtual ~Vehicle();
     Subject * aVehicle;
 
@@ -41,7 +43,7 @@ public:
     //the vehicles which will be used into the vehicle class into a thread setup class, rather than passing them
     //to the update method through a pointer, i.e. each thread needs its own deep copy of the vehicles
     //to prevent any race conditions or crashes
-    virtual void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles) = 0;
+    virtual void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles, trafficlights *trafficlight) = 0;
     virtual void updateTrafficLightsSignal(bool trafficlights_On);
 
     //Delete here as setup has moved
@@ -52,11 +54,11 @@ public:
     bool getThreadStatus();
     void setThreadStatus(bool status);
 
+    int getOriginalX();
+    int getOriginalY();
 
     //***********VARIABLES*****************:
-    //Range of view will act as a radius in which the drivers can see
-    int rangeOfView;
-
+    string direction;
     enum vehcileAttributes {HeightOfVehicle, WidthOfCar};
     enum Aggressiveness    {Low = 1 , Medium = 2, High = 3};
     enum topSpeeds         {LowAggressiveTopSpeed = 60, MediumAggressiveTopSpeed = 100, HighAggressiveTopSpeed = 160};
@@ -80,6 +82,8 @@ public:
     //Add this to the constructor so it can change
     //And thus change the outcome of the simulation
     int speedLimit;
+
+    trafficlights * trafficlight;
 
     //Interceptor vairables and methods
     Dispatcher dis;

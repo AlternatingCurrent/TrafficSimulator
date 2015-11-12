@@ -1,7 +1,7 @@
 #include "carwithtrailer.h"
 #include "vehicle.h"
 #include "subject.h"
-carwithtrailer::carwithtrailer(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression, xStartingPos, yStartingPos)
+carwithtrailer::carwithtrailer(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos,string direction, QGraphicsItem *parent):Vehicle(width,height,aggression, xStartingPos, yStartingPos,direction )
 {
 
   //this->topSpeed = 100;
@@ -17,8 +17,9 @@ void carwithtrailer::update(){
 }
 
 //Thread setup , correct way to do it, QT documentation is incorrect in subclassing from QThread
-void carwithtrailer::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){
+void carwithtrailer::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles,trafficlights *trafficlight){
     //connect the signal emitted from the thread starting to the slot update
     this->vehicles = vehicles;
+    this->trafficlight= trafficlight;
     connect(&cThread,SIGNAL(started()),this,SLOT(update(vehicles)));
 }

@@ -42,18 +42,18 @@ Vehicle *VehicleFactory::createVehicle(QString type)
     Vehicle * vehicle;
     QString redcar ="regularcar", policecar = "policecar", cartrailer = "carwithtrailer";
     if(type == redcar){
-       vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
+   //    vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
        return vehicle;
     }
     else if(type == policecar){
 
-         vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
+     //    vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
          return vehicle;
 
     }
     else if(type == cartrailer){
 
-        vehicle = new carwithtrailer(asubject,0,0,0.0,0,0);
+      //  vehicle = new carwithtrailer(asubject,0,0,0.0,0,0);
         return vehicle;
     }
     else{
@@ -74,47 +74,59 @@ Vehicle *VehicleFactory::createRandomVehicle()
     //trying to minimise if statments
     switch(randomNumber == 1) {
         case 1:
-        vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
+     //   vehicle = new RegularCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
         case 2:
-        vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
+     //   vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
         case 3:
-        vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
+     //   vehicle = new PoliceCar(asubject,0,0,0.0,0,0);//this has to be changed (0,0,0);
         return vehicle;
             break;
     }
 }
 
 
-Vehicle *VehicleFactory::createVehicle(QString type, int Aggressiveness, int xPosition, int yPosition, Subject * subject)  //obviously need to decide exactly what we can do here
+Vehicle *VehicleFactory::createVehicle(QString type, string aggressiveness, int xPosition, int yPosition, Subject * subject,QGraphicsScene *scene, string direction)  //obviously need to decide exactly what we can do here
 {
+ if(aggressiveness == "Low"){
+     aggressive = 1;
+ }
+ if(aggressiveness == "Medium"){
+     aggressive = 2;
+ }
+ if(aggressiveness == "High"){
+     aggressive = 3;
+ }
+
   //QGraphicsItem * d = new QGraphicsItem();
     Vehicle * vehicle;
     QString redcar ="regularcar", policecar = "policecar", cartrailer = "carwithtrailer";
     if(type == redcar){
-       vehicle = new RegularCar(subject,50,50,Aggressiveness,xPosition,yPosition);
-       vehicle= setup(vehicle,"carRedRight.png");
+       vehicle = new RegularCar(subject,50,50,aggressive,xPosition,yPosition,direction);
+       vehicle= setup(vehicle,"carRedRight.png",xPosition,yPosition);
        vehicle->setPos(xPosition, yPosition);
+
        return vehicle;
     }
     else if(type == policecar){
 
-         vehicle = new PoliceCar(subject,50,50,Aggressiveness,xPosition,yPosition);
-         vehicle= setup(vehicle,"police.png");
+         vehicle = new PoliceCar(subject,50,50,aggressive,xPosition,yPosition,direction);
+         vehicle= setup(vehicle,"police.png",xPosition,yPosition);
          return vehicle;
 
     }
     else if(type == cartrailer){
 
-        vehicle = new carwithtrailer(subject,50,50,Aggressiveness,xPosition,yPosition);
-        vehicle= setup(vehicle,"cartrailer.png");
+        vehicle = new carwithtrailer(subject,50,50,aggressive,xPosition,yPosition,direction);
+        vehicle= setup(vehicle,"cartrailer.png",xPosition,yPosition);
         return vehicle;
     }
     else{
     }
+    scene->addItem(vehicle);
 
 }
 
@@ -123,7 +135,7 @@ VehicleFactory::~VehicleFactory()
 
 }
 
-Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type)
+Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type, int x, int y)
 {
 
     QPixmap watermark(":/"+type); //changed
@@ -135,6 +147,7 @@ Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type)
     vehicle->area_to_check_for_overtaking = new QGraphicsRectItem(rect_for_overtaking, vehicle);
     //vehicle-> area->setPen(QPen(Qt::white));
     vehicle-> area->setPos(vehicle->x()-30,vehicle->y()+25);
+    vehicle->area_to_check_for_overtaking->setPos(vehicle->x()-30,vehicle->y()+25);
     return vehicle;
 }
 

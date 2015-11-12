@@ -28,7 +28,7 @@ bool timer::isTimeout(unsigned long seconds) {
 timer performance_timer;
 
 
-RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression,xStartingPos,yStartingPos)
+RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos,string direction, QGraphicsItem *parent):Vehicle(width,height,aggression,xStartingPos,yStartingPos,direction)
 {
   //qDebug()<< xStartingPos;
   // Colin changed for debugging setPos(xStartingPos, yStartingPos);
@@ -40,9 +40,10 @@ RegularCar::RegularCar(Subject *aVehicle, int width, int height, double aggressi
 
 //Thread setup , correct way to do it, QT documentation is incorrect in subclassing from QThread
 //i.e. QObject and move this object to qthread in main states
-void RegularCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){
+void RegularCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles,trafficlights *trafficlight){
     //connect the signal emitted from the thread "starting" to the slot update
     this->vehicles = vehicles;
+    this->trafficlight= trafficlight;
     connect(&cThread,SIGNAL(started()),this,SLOT(update()));
 }
 
@@ -53,34 +54,37 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
 
     //Performance monitoring methods, comment out in release
     performance_timer.start();
-
     //Only execute the following when the thread status is active
   while(this->getThreadStatus() == true){
- qDebug()<<"In the regular car class  "<< trafficLightsOn;
+
   //Sleep thread for 100 ms every iteration
   QThread::currentThread()->msleep(100);
-
-
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   bool stopIfNearLights;
-  QList<QGraphicsItem *> colliding_items = area->collidingItems();
-      for (size_t i = 0, n = colliding_items.size(); i < n; i++){
-          trafficlights * lights = dynamic_cast<trafficlights *>(colliding_items[i]);
-          if (lights){
-                stopIfNearLights = true ;
-      }
-          else{
-              stopIfNearLights = false;
-          }
-      }
+  //Colins - Thread Safety
+   if(this->area->collidesWithItem(trafficlight)) {
+       stopIfNearLights = true ;
+   }
+   else{
+       stopIfNearLights = false;
+   }
+
+
+   if(trafficLightsOn){
+       for(int i=0; i< vehicles.size();i++){
+           //If lights are on and if the current car collides with a vehicle and that vehicle collides with the traffic lights and the lights are on
+           if(this->area->collidesWithItem(vehicles.at(i)->area) && vehicles.at(i)->area->collidesWithItem(trafficlight))
+               stopIfNearLights =true;
+       }
+   }
+
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if(trafficLightsOn == true && stopIfNearLights ==true){
-//stop
+  //stop
   }
   else{
-  //Setting up the interchangable strategy context object
   if(aggression ==  High){
   StrategyContext * context = new StrategyContext(new IncreaseSpeedAggressive());
   context->executeStrategyDecision(this->vehicles, this);
@@ -90,7 +94,7 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   context->executeStrategyDecision(this->vehicles, this);
   }
 
-  if(aggression == Medium){
+    if(aggression == Medium){
     StrategyContext * context = new StrategyContext(new IncreaseSpeedMedium());
     context->executeStrategyDecision(this->vehicles, this);
     context = new StrategyContext(new DecreaseSpeed());

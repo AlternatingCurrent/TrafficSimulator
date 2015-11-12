@@ -1,7 +1,7 @@
 #include "policecar.h"
 #include <QGraphicsPixmapItem>
 
-PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent):Vehicle(width,height,aggression, xStartingPos, yStartingPos)
+PoliceCar::PoliceCar(Subject * aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos,string direction, QGraphicsItem *parent):Vehicle(width,height,aggression, xStartingPos, yStartingPos,direction)
 {
     setPos(xStartingPos, yStartingPos);
  //   setUp();
@@ -19,8 +19,9 @@ void PoliceCar::update(){
 
 
 //Thread setup , correct way to do it, QT documentation is incorrect in subclassing from QThread
-void PoliceCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles){
+void PoliceCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles,trafficlights *trafficlight){
     //connect the signal emitted from the thread starting to the slot update
     this->vehicles = vehicles;
+    this->trafficlight= trafficlight;
     connect(&cThread,SIGNAL(started()),this,SLOT(update(vehicles)));
 }

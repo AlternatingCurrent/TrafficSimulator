@@ -11,6 +11,8 @@ trafficlights * lights;
 QGraphicsScene *scene;
 QGraphicsView * view;
 std::vector<Vehicle*> vehicles;
+int maxNumberOfCars =0;
+
 
 QVector<QThread*> vehicleThreads;
 
@@ -48,34 +50,54 @@ void Setup::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
 
 void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 {
+     int carx;
+     int cary;
+     string direction;
 
-     vehicleThreads.push_back(&aThread);
-//     vehicleThreads.push_back(&bThread);
-//     vehicleThreads.push_back(&cThread);
-//     vehicleThreads.push_back(&dThread);
+      maxNumberOfCars++;
+      if(maxNumberOfCars <=4){
+      if(maxNumberOfCars == 1){
+      vehicleThreads.push_back(&aThread);
+      carx = 0;
+      cary = 450;
+      direction = "east";
 
-    string aggressiveness;
-    string vehicleType;
+      }
+      if(maxNumberOfCars == 2){
+      vehicleThreads.push_back(&bThread);
+      carx = 100;
+      cary = 450;
+      direction = "east";
+      }
+      if(maxNumberOfCars == 3){
+      vehicleThreads.push_back(&cThread);
+      carx = 200;
+      cary = 450;
+      direction = "east";
+      }
+      if(maxNumberOfCars == 4){
+      vehicleThreads.push_back(&dThread);
+      carx = 1000;
+      cary = 550;
+      direction = "west";
+      }
 
-//      Subject * asubject = new Subject();
-//      QGraphicsItem * a;
-//      QGraphicsItem * b;
-//      QGraphicsItem * c;
-//      QGraphicsItem * d;
-    //  Vehicle * aCar = new PoliceCar(asubject,50,50,3,a);
+       string aggressiveness;
+       string vehicleType;
 
-//      Vehicle * car2 = new RegularCar(asubject,50,50,3,100,450);
-//      Vehicle * car1 = new RegularCar(asubject,50,50,1,150,450);
-//      Vehicle * car3 = new RegularCar(asubject,50,50,2,0,450);
-//      Vehicle * car4 = new RegularCar(asubject,50,50,2,1000,450);
+      aggressiveness = ui->Aggressiveness->currentText().toStdString();
       Vehicle * carTry;
       VehicleFactory * vf = new VehicleFactory();
-      carTry = vf->createVehicle("regularcar",1,100,350,asubject);
+      carTry = vf->createVehicle("regularcar",aggressiveness,carx,cary,asubject,scene,direction);
       scene->addItem(carTry);
 
 
+      vehicleType    = ui->addVehicles->currentText().toStdString();
+      vehicles.push_back(carTry);
 
-
+    }else{
+       ui->reportBox->setText("You can only add maxium of four vehicles");
+      }
 
 
 
@@ -93,20 +115,6 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //      scene->addItem(car2);
 //      scene->addItem(car1);
 //      scene->addItem(car3);
@@ -119,10 +127,6 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 //      car2->setPos(0,450);
 //      car3->setPos(100,450);
 
-      aggressiveness = ui->Aggressiveness->currentText().toStdString();
-      vehicleType    = ui->addVehicles->currentText().toStdString();
-
-vehicles.push_back(carTry);
 //      vehicles.push_back(car2);
 //      vehicles.push_back(car3);
 //      vehicles.push_back(car1);
@@ -250,8 +254,8 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
 
     //**************************SETUP THREAD********************************************************************
     for(int i =0; i< vehicles.size();i++){
-
-            vehicles.at(i)->DoThreadSetup(*vehicleThreads.at(i),vehicles);
+            //vehicles now have access to lights to check if it sees them :)
+            vehicles.at(i)->DoThreadSetup(*vehicleThreads.at(i),vehicles,lights);
             vehicles.at(i)->moveToThread(vehicleThreads.at(i)); //Take this objet and move it into &cThread, not suclassign the thre, instead we are moving it to the thread
             connect(vehicles.at(i), SIGNAL(dispatchNewVehiclePositions(Vehicle*,int,int)), this ,
                     SLOT(recieveNewVehiclePositions(Vehicle*,int,int)));

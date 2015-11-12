@@ -5,7 +5,7 @@
 #include <QGraphicsPixmapItem>
 using namespace std;
 
-Vehicle::Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent)
+Vehicle::Vehicle(int width, int height, int aggression, int xStartingPos, int yStartingPos, string direction, QGraphicsItem *parent)
 {
     this->width      = width;
     this->height     = height;
@@ -14,7 +14,7 @@ Vehicle::Vehicle(int width, int height, int aggression, int xStartingPos, int yS
     this->xStartingPos = xStartingPos;
     this->yStartingPos = yStartingPos;
     timesCalled = 0;
-
+    this->direction      = direction;
 }
 
 Vehicle::~Vehicle()
@@ -41,6 +41,14 @@ bool Vehicle::getThreadStatus(){
 
 void Vehicle::setThreadStatus(bool status){
    doThread = status;
+}
+
+int Vehicle::getOriginalX(){
+    return xStartingPos;
+}
+
+int Vehicle::getOriginalY(){
+    return yStartingPos;
 }
 
 

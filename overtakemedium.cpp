@@ -21,12 +21,12 @@ void OverTakeMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVeh
         //change 450
         //Will only be able to overtake low aggressive drivers
        if((currentVehicle->area->collidesWithItem((vehicles.at(i)->area))) &&(currentVehicle->pos().x() < vehicles.at(i)->pos().x()) &&
-       (currentVehicle->pos().y() ==   450)  && (vehicles.at(i)->aggression == currentVehicle->Low)){ //could be affected by juans change
+       (currentVehicle->pos().y() ==   currentVehicle->getOriginalY())  && (vehicles.at(i)->aggression == currentVehicle->Low)){ //could be affected by juans change
            doOperation(currentVehicle);
        }
 
     //See if vehicle is colliding with any vehicle on the left hand side of the road
-    if( currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (vehicles.at(i)->pos().y() == 450) ){//could be affected by juans change
+    if( currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (vehicles.at(i)->pos().y() == currentVehicle->getOriginalY()) ){//could be affected by juans change
            isColliding = true;
     }
     }
@@ -34,14 +34,14 @@ void OverTakeMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVeh
     //We can move back in if we are no longer colliding with any vehicles
     if((currentVehicle->isOvertaking == true) && (isColliding == false) ){ //make sure not colliding down the line
          //currentVehicle->setPos((currentVehicle->pos().x()), (currentVehicle->pos().y()-50));
-         emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-50);
+         emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()-100);
          currentVehicle->isOvertaking = false;
     }
   }
 
 
 void OverTakeMedium :: doOperation(Vehicle * currentVehicle){
-       emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+50);
+       emit currentVehicle->dispatchNewVehiclePositions(currentVehicle,currentVehicle->pos().x(),currentVehicle->pos().y()+100);
         currentVehicle->isOvertaking = true;
 
 

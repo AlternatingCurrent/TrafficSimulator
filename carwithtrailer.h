@@ -10,8 +10,8 @@ using namespace std;
 class carwithtrailer : public Vehicle
 {
 public:
-    carwithtrailer(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, QGraphicsItem *parent =0 );
-    void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles);
+    carwithtrailer(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, string direction, QGraphicsItem *parent =0);
+    void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles, trafficlights *trafficlight);
 //signals:
 
 public slots:

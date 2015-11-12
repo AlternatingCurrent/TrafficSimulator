@@ -5,6 +5,8 @@
 #include <QGraphicsPixmapItem>
 #include "vehicle.h"
 #include "subject.h"
+#include <QGraphicsScene>
+
 class VehicleFactory
 {
 public:
@@ -12,11 +14,12 @@ public:
     VehicleFactory();
     Vehicle *createVehicle(QString type);
     Vehicle *createRandomVehicle(); //random aggressivness
-    Vehicle *createVehicle(QString type, int Aggressiveness, int xPosition, int yPosition, Subject *subject);
+    Vehicle *createVehicle(QString type, string aggressiveness, int xPosition, int yPosition, Subject *subject, QGraphicsScene *scene, string direction);
     ~VehicleFactory();
 private:
     Subject * asubject;
-    Vehicle * setup(Vehicle * vehicle, QString type);
+    Vehicle * setup(Vehicle * vehicle, QString type, int x, int y);
+    int aggressive;
 };
 
 #endif // VEHICLEFACTORY_H
