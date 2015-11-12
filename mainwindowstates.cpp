@@ -20,6 +20,10 @@ QThread aThread;
 QThread bThread;
 QThread cThread;
 QThread dThread;
+QThread eThread;
+QThread fThread;
+QThread gThread;
+
 
 bool TrafficLightsStop;
 
@@ -55,7 +59,7 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
      string direction;
 
       maxNumberOfCars++;
-      if(maxNumberOfCars <=4){
+      if(maxNumberOfCars <=7){
       if(maxNumberOfCars == 1){
       vehicleThreads.push_back(&aThread);
       carx = 0;
@@ -65,13 +69,13 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
       }
       if(maxNumberOfCars == 2){
       vehicleThreads.push_back(&bThread);
-      carx = 100;
+      carx = 200;
       cary = 450;
       direction = "east";
       }
       if(maxNumberOfCars == 3){
       vehicleThreads.push_back(&cThread);
-      carx = 200;
+      carx = 300;
       cary = 450;
       direction = "east";
       }
@@ -81,6 +85,35 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
       cary = 550;
       direction = "west";
       }
+
+      //*************** scenario 1 on top overtaking example
+      if(maxNumberOfCars == 5){
+      vehicleThreads.push_back(&eThread);
+      carx = 0;
+      cary = 80;
+      direction = "east";
+      }
+      if(maxNumberOfCars == 6){
+      vehicleThreads.push_back(&fThread);
+      carx = 200;
+      cary = 80;
+      direction = "east";
+      }
+      if(maxNumberOfCars == 7){
+      vehicleThreads.push_back(&gThread);
+      carx = 500;
+      cary = 170;
+      direction = "west";
+      }
+
+
+
+
+
+      //***************
+
+
+
 
        string aggressiveness;
        string vehicleType;
@@ -172,8 +205,8 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
         ui->mainSimulation->setScene(scene);
         scene->setBackgroundBrush(QBrush(QImage(":/road_new.png")/*QBrush(newPixmap)*/));
         lights = new trafficlights(aVehicle );
-        lights->setPos(800,250);
-        scene->addItem(lights);
+        lights->setPos(800,/*-100*/250);
+         scene->addItem(lights);
 
 }
 

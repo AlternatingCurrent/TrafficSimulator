@@ -25,3 +25,8 @@ void PoliceCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles,traff
     this->trafficlight= trafficlight;
     connect(&cThread,SIGNAL(started()),this,SLOT(update(vehicles)));
 }
+
+void PoliceCar::updateTrafficLightsSignal(bool trafficlights_On)
+{
+    trafficLightsOn = trafficlights_On;
+}

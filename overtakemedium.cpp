@@ -21,7 +21,8 @@ void OverTakeMedium :: decision(vector<Vehicle*> vehicles,  Vehicle * currentVeh
         //change 450
         //Will only be able to overtake low aggressive drivers
        if((currentVehicle->area->collidesWithItem((vehicles.at(i)->area))) &&(currentVehicle->pos().x() < vehicles.at(i)->pos().x()) &&
-       (currentVehicle->pos().y() ==   currentVehicle->getOriginalY())  && (vehicles.at(i)->aggression == currentVehicle->Low)){ //could be affected by juans change
+       (currentVehicle->pos().y() ==   currentVehicle->getOriginalY())  && (vehicles.at(i)->aggression == currentVehicle->Low)
+               && (aquire_and_check(currentVehicle) == 1)){ //could be affected by juans change
            doOperation(currentVehicle);
        }
 

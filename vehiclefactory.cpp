@@ -101,12 +101,17 @@ Vehicle *VehicleFactory::createVehicle(QString type, string aggressiveness, int 
      aggressive = 3;
  }
 
-  //QGraphicsItem * d = new QGraphicsItem();
     Vehicle * vehicle;
     QString redcar ="regularcar", policecar = "policecar", cartrailer = "carwithtrailer";
     if(type == redcar){
        vehicle = new RegularCar(subject,50,50,aggressive,xPosition,yPosition,direction);
+       if(direction == "west"){
+           vehicle= setup(vehicle,"carRedLeft.png",xPosition,yPosition);
+       }
+         else{
        vehicle= setup(vehicle,"carRedRight.png",xPosition,yPosition);
+       }
+
        vehicle->setPos(xPosition, yPosition);
 
        return vehicle;
@@ -128,6 +133,7 @@ Vehicle *VehicleFactory::createVehicle(QString type, string aggressiveness, int 
     }
     scene->addItem(vehicle);
 
+
 }
 
 VehicleFactory::~VehicleFactory()
@@ -137,7 +143,6 @@ VehicleFactory::~VehicleFactory()
 
 Vehicle *VehicleFactory::setup(Vehicle *vehicle, QString type, int x, int y)
 {
-
     QPixmap watermark(":/"+type); //changed
     QPixmap newPixmap = watermark.scaled(QSize(50,50),  Qt::KeepAspectRatio);
     vehicle->setPixmap(newPixmap);

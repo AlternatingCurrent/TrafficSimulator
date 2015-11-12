@@ -44,7 +44,7 @@ public:
     //to the update method through a pointer, i.e. each thread needs its own deep copy of the vehicles
     //to prevent any race conditions or crashes
     virtual void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles, trafficlights *trafficlight) = 0;
-    virtual void updateTrafficLightsSignal(bool trafficlights_On);
+    virtual void updateTrafficLightsSignal(bool trafficlights_On)=0;
 
     //Delete here as setup has moved
      QGraphicsRectItem * area;

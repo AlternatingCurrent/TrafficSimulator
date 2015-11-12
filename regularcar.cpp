@@ -47,6 +47,11 @@ void RegularCar::DoThreadSetup(QThread &cThread, vector <Vehicle*> vehicles,traf
     connect(&cThread,SIGNAL(started()),this,SLOT(update()));
 }
 
+void RegularCar::updateTrafficLightsSignal(bool trafficlights_On)
+{
+     trafficLightsOn = trafficlights_On;
+}
+
 //Update no longer accepts vehicles as they are now threads, and you cannot
 //pass data through this siganl and slot therefore we make a copy in do thread setup
 
@@ -65,20 +70,22 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   //Colins - Thread Safety
    if(this->area->collidesWithItem(trafficlight)) {
        stopIfNearLights = true ;
+//       qDebug()<< "touching traffic light";
    }
    else{
        stopIfNearLights = false;
+//       qDebug()<< " not touching traffic light";
    }
 
 
-   if(trafficLightsOn){
+   if(trafficLightsOn == true){
        for(int i=0; i< vehicles.size();i++){
            //If lights are on and if the current car collides with a vehicle and that vehicle collides with the traffic lights and the lights are on
            if(this->area->collidesWithItem(vehicles.at(i)->area) && vehicles.at(i)->area->collidesWithItem(trafficlight))
                stopIfNearLights =true;
        }
    }
-
+qDebug()<< "trafficLightsOn boolean is " << trafficLightsOn;
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if(trafficLightsOn == true && stopIfNearLights ==true){

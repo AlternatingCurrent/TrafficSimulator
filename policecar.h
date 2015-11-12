@@ -16,6 +16,7 @@ class PoliceCar : public Vehicle
 public:
     PoliceCar(Subject *aVehicle, int width, int height, double aggression, int xStartingPos, int yStartingPos, string direction, QGraphicsItem *parent =0);
     void DoThreadSetup(QThread &cThread, vector<Vehicle *> vehicles, trafficlights *trafficlight);
+    void updateTrafficLightsSignal(bool trafficlights_On);
 //signals:
 
 public slots:

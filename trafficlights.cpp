@@ -116,11 +116,18 @@ void trafficlights::traffic_light_timer()
     if(has_vehicle == false)
     {
         trafficLightOn = true;
+        setPixmap(QPixmap(":/tlRed.png"));
+//        QTimer::singleShot(5000, this, SLOT(traffic_light_concurrency_timer()));
       //  cross_road(1);
            //here I want to send a signal to every vehicle object in the are i specified informing them that the light is red
     }
-    setPixmap(QPixmap(":/tlRed.png"));
-    QTimer::singleShot(5000, this, SLOT(traffic_light_concurrency_timer()));
+
+    else{
+//        trafficLightOn = false;
+//    setPixmap(QPixmap(":/tlRed.png"));
+//    QTimer::singleShot(5000, this, SLOT(traffic_light_concurrency_timer()));
+    }
+      QTimer::singleShot(5000, this, SLOT(traffic_light_concurrency_timer()));
 
 }
 

@@ -22,7 +22,7 @@ RegularPedestrian::RegularPedestrian(QGraphicsItem *parent)
     maxRange=550;
     distanceTravelled=0;
     speed = 5;
-    setPos(820,250+getSpeed());
+   setPos(820,250+getSpeed());
  //connect a timer to move
 
 //    QTimer * move_timer = new QTimer(this);
