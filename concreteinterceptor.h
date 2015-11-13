@@ -3,6 +3,7 @@
 #include "contextobject.h"
 #include <time.h>
 #include <vector>
+#include <iostream>
 
 struct loggingInfo {
     time_t time;

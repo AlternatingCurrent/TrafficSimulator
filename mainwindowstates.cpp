@@ -128,6 +128,11 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
       vehicleType    = ui->addVehicles->currentText().toStdString();
       vehicles.push_back(carTry);
 
+      //Interceptor
+
+      carTry->createDispatcher();
+      carTry->dis.attach(logger.getInterceptor());
+
     }else{
        ui->reportBox->setText("You can only add maxium of four vehicles");
       }
@@ -165,16 +170,6 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 //      vehicles.push_back(car1);
 //      vehicles.push_back(car4);
 
-    //Interceptor
-//    car1->createDispatcher();
-//    car2->createDispatcher();
-//    car3->createDispatcher();
-//    car4->createDispatcher();
-
-//    car1->dis.attach(logger.getInterceptor());
-//    car2->dis.attach(logger.getInterceptor());
-//    car3->dis.attach(logger.getInterceptor());
-//    car4->dis.attach(logger.getInterceptor());
 }
 
 void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
@@ -259,8 +254,8 @@ void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
     }
     // Interceptor code, should be moved to report::viewReport
     logger.updateTextFile();
-
-    cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
+// Performance checking, comment out at release
+//    cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
     setState(mWindow,new ReportState());
 
 
