@@ -36,14 +36,14 @@ double trafficlights::distanceTo(QGraphicsItem *item)
 
 void trafficlights::cross_road(int pedestrianNo)
 {
-
+/*
     if(pedestrianCount >= pedestrianNo){
         return;
     }
     else{
     pedestrianmaker * pedmaker = new pedestrianmaker();
     pedestrian  * ped ;
-    ped =pedmaker->makeRandomPedestrian();
+    ped =pedmaker->makeRandomPedestrian(scene);
     ped->setPos(x()+20,y()+60);
      QLineF ln(QPointF(x(),y()),destination);
     int angle = -1* ln.angle(); //must be made clockwiese *-1
@@ -54,7 +54,7 @@ void trafficlights::cross_road(int pedestrianNo)
 
     pedestrianCount+=1;
     }
-
+*/
 }
 
 bool trafficlights::getTrafficLightsState()

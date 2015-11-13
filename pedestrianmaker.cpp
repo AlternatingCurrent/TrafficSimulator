@@ -7,6 +7,8 @@
 #include "time.h"
 #include <QDebug>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+
 pedestrianmaker::pedestrianmaker()
 {
 
@@ -17,22 +19,26 @@ pedestrianmaker::~pedestrianmaker()
 
 }
 
-pedestrian *pedestrianmaker::makeRandomPedestrian()
+pedestrian *pedestrianmaker::makeRandomPedestrian(QGraphicsScene *scene)
 {
     pedestrian *  ped = new RegularPedestrian();
     int random_number = rand()%3;
     if(random_number == 0){
         ped = new athlete();
+        ped->show();
         return ped;
     }else if(random_number == 1 ){
         BabyPedestrian *baby = new BabyPedestrian();
+        scene->addItem(baby);
         ped = new  BabyPedestrianAdapter(baby);
-        QPixmap watermark(":/baby.png");
-        QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
-        ped->setPixmap(newPixmap);
+        //QPixmap watermark(":/baby.png");
+        //QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
+        //ped->setPixmap(newPixmap);
+        ped->show();
         return ped;
     }
     else{
+        ped->show();
        return ped;
     }
 

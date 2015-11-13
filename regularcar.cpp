@@ -85,7 +85,7 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
                stopIfNearLights =true;
        }
    }
-qDebug()<< "trafficLightsOn boolean is " << trafficLightsOn;
+//qDebug()<< "trafficLightsOn boolean is " << trafficLightsOn;
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if(trafficLightsOn == true && stopIfNearLights ==true){

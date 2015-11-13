@@ -274,7 +274,7 @@ void Simulation::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
     qDebug()<< "in add ped";
     pedestrianmaker * pedmaker = new pedestrianmaker();
     pedestrian  * ped ;
-    ped =pedmaker->makeRandomPedestrian();
+    ped =pedmaker->makeRandomPedestrian(scene);
     scene->addItem(ped);
     ped->move2(lights->x(), lights->y());
 }
@@ -339,7 +339,7 @@ void Simulation::trafficLightsCheck()
        // qDebug()<< "in add ped";
         pedestrianmaker * pedmaker = new pedestrianmaker();
         pedestrian  * ped ;
-        ped =pedmaker->makeRandomPedestrian();
+        ped =pedmaker->makeRandomPedestrian(scene);
         scene->addItem(ped);
         ped->move2(lights->x(), lights->y());
         return;

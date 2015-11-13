@@ -7,7 +7,7 @@ class pedestrianmaker
 public:
     pedestrianmaker();
     ~pedestrianmaker();
-    pedestrian * makeRandomPedestrian();
+    pedestrian * makeRandomPedestrian(QGraphicsScene *scene);
     pedestrian * makePedestrian(QString pedestrianType);
 };
 

@@ -3,6 +3,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
+#include <QPointF>
 
 class BabyPedestrian: public QObject, public QGraphicsPixmapItem {
     Q_OBJECT

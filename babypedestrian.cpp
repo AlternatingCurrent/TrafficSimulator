@@ -21,7 +21,7 @@ BabyPedestrian::BabyPedestrian(QGraphicsItem * parent)
     distanceTravelled=0;
     speed = 6;
     maxRange =550;
-   // qDebug() <<"baby created";
+//   qDebug() <<"baby created";
 }
 
 BabyPedestrian::~BabyPedestrian()
@@ -76,9 +76,10 @@ void BabyPedestrian::move()
 }
 void BabyPedestrian::crawl(int x, int yPos)
 {
+    setPos(x,y()+20);
     int posOfXLights = x + 20;
     while(y() < getMaxRange()){
-             setPos(posOfXLights,y()+20);
+             setPos(posOfXLights,this->y()+20);
              delay();
              qApp->processEvents();
            //  qDebug()<<"moving";
@@ -92,3 +93,5 @@ void BabyPedestrian::delay()
         while (QTime::currentTime() < dieTime)
             QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+
+
