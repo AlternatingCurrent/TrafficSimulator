@@ -112,20 +112,17 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 
       //***************
 
-
-
-
        string aggressiveness;
-       string vehicleType;
-
+       QString vehicleType;
+       vehicleType    = ui->addVehicles->currentText().toStdString().c_str();;
       aggressiveness = ui->Aggressiveness->currentText().toStdString();
       Vehicle * carTry;
       VehicleFactory * vf = new VehicleFactory();
-      carTry = vf->createVehicle("regularcar",aggressiveness,carx,cary,asubject,scene,direction);
+      carTry = vf->createVehicle(vehicleType/*"carwithtrailer"*/,aggressiveness,carx,cary,asubject,scene,direction);
       scene->addItem(carTry);
 
 
-      vehicleType    = ui->addVehicles->currentText().toStdString();
+     // vehicleType    = ui->addVehicles->currentText().toStdString();
       vehicles.push_back(carTry);
 
       //Interceptor
@@ -184,9 +181,9 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 
     QPixmap roadImage(":/Road.jpg");
         ui->Aggressiveness->setVisible(false);
-        ui->addVehicles->addItem("Car");
-        ui->addVehicles->addItem("Police Car");
-        ui->addVehicles->addItem("Motorbike");
+        ui->addVehicles->addItem("regularcar");
+        ui->addVehicles->addItem("carwithtrailer");
+        ui->addVehicles->addItem("policecar");
 
         ui->Aggressiveness->addItem("Low");
         ui->Aggressiveness->addItem("Medium");
