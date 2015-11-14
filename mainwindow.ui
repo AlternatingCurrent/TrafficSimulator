@@ -97,45 +97,6 @@
      <string>Add Vehicle</string>
     </property>
    </widget>
-   <widget class="QFontComboBox" name="Weather">
-    <property name="geometry">
-     <rect>
-      <x>1710</x>
-      <y>180</y>
-      <width>188</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="currentText">
-     <string>Set Weather</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnWeather">
-    <property name="geometry">
-     <rect>
-      <x>1750</x>
-      <y>220</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Set</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnAddTrafficLightsPedestrianCrossing">
-    <property name="geometry">
-     <rect>
-      <x>1750</x>
-      <y>120</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Pedestrian Crossing</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="addVehicles">
     <property name="geometry">
      <rect>
@@ -170,6 +131,19 @@
       <width>1691</width>
       <height>791</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnViewReport">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>810</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View Report</string>
     </property>
    </widget>
   </widget>

@@ -30,11 +30,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnWeather_clicked()
-{
-
-}
-
 void MainWindow::on_btnAddVehicle_clicked()
 {
      mState->addVehicle(*this,ui);
@@ -129,3 +124,8 @@ void MainWindow::setUpCarImages(Vehicle * aVehicle){
 
 }
 
+
+void MainWindow::on_btnViewReport_clicked()
+{
+    viewReport();
+}

@@ -216,11 +216,13 @@ void Setup::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
 void Setup::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // throw error, Simulation is not running, nothing to stop
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation not running, nothing to stop\n");
 
 }
 void Setup::viewReport(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // throw error, Simulation has not run yet, nothing to show
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation has not run, nothing to show\n");
 }
 
 Simulation::~Simulation()
@@ -234,10 +236,12 @@ void Simulation::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
 void Simulation::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     //throw error, Simulation already running
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation already running\n");
 }
 void Simulation::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     //throw error, Simulation already running
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation already running\n");
 }
 void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
@@ -256,17 +260,17 @@ void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
     logger.updateTextFile();
 // Performance checking, comment out at release
 //    cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
-    setState(mWindow,new ReportState());
-
+    setState(mWindow, new ReportState());
 
 }
 void Simulation::viewReport(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // throw error, Simulation is running, stop simulation first
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation running, stop simulation first\n");
 }
 
 void Simulation::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
-    qDebug()<< "in add ped";
+    //qDebug()<< "in add ped";
     pedestrianmaker * pedmaker = new pedestrianmaker();
     pedestrian  * ped ;
     ped =pedmaker->makeRandomPedestrian(scene);
@@ -368,11 +372,13 @@ void ReportState::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 void ReportState::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // throw error, Simulation not running
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "ERROR: Simulation not running\n");
 
 }
 void ReportState::viewReport(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // code to show report goes here
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Report: Simulation Finished, Logs can be found in the logs.txt file\n");
 }
 
 void ReportState::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
@@ -380,6 +386,7 @@ void ReportState::addPedestrain(MainWindow &mWindow, Ui::MainWindow *ui){
 }
 
 void ReportState :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Moving to Simulation state\n");
     setState(mWindow, new Simulation());
 }
 

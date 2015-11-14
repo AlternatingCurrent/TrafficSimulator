@@ -59,8 +59,6 @@ public slots:
     void trafficlightsCheck();
 private slots:
 
-    void on_btnWeather_clicked();
-
     void on_btnAddVehicle_clicked();
 
     void on_btnStart_clicked();
@@ -68,6 +66,8 @@ private slots:
     void on_btnStop_clicked();
 
     void on_addVehicles_currentIndexChanged(const QString &arg1);
+
+    void on_btnViewReport_clicked();
 
 private:
     Subject * asubject;
