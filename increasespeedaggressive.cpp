@@ -14,7 +14,7 @@ void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * cu
        bool collidesWithItemInFront = false;
 
 
-       for(int i =0; i< vehicles.size(); i++){
+       for(unsigned i =0; i< vehicles.size(); i++){
            //if thw vehicle is colliding with the vehicle in front and they are on the same road && it is not the current vehicle
            if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (currentVehicle->pos().y() == vehicles.at(i)->pos().y()) &&(vehicles.at(i)->pos().x() > currentVehicle->pos().x())
               && (currentVehicle->pos() !=vehicles.at(i)->pos())){

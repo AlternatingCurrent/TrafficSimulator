@@ -49,7 +49,7 @@ Setup::~Setup()
 
 void Setup::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
 {
-    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Your message here Aaron");
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Road\n");
 }
 
 void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
@@ -249,11 +249,11 @@ void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
     // code to stop simulation here
     start_stop = 0;
     cout << "Stop Simulation\n";
-    int totalTimesCalled = 0;
+//    int totalTimesCalled = 0;
 
     //Turn off all threads
-    for(int i =0; i< vehicles.size();i++){
-        totalTimesCalled += vehicles.at(i)->timesCalled;
+    for(unsigned i =0; i< vehicles.size();i++){
+//        totalTimesCalled += vehicles.at(i)->timesCalled;
         vehicles.at(i)->setThreadStatus(false);
     }
     // Interceptor code, should be moved to report::viewReport
@@ -285,7 +285,7 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
 
 
     //**************************SETUP THREAD********************************************************************
-    for(int i =0; i< vehicles.size();i++){
+    for(unsigned i =0; i< vehicles.size();i++){
             //vehicles now have access to lights to check if it sees them :)
             vehicles.at(i)->DoThreadSetup(*vehicleThreads.at(i),vehicles,lights);
             vehicles.at(i)->moveToThread(vehicleThreads.at(i)); //Take this objet and move it into &cThread, not suclassign the thre, instead we are moving it to the thread
@@ -294,9 +294,8 @@ void Simulation :: startButtonClicked(MainWindow &mWindow,Ui::MainWindow * ui ){
       }
      //*****************************************************************************************************************
 
-
     //start all the threads
-    for(int i =0; i< vehicles.size();i++){
+    for(unsigned i =0; i< vehicles.size();i++){
     vehicles.at(i)->setThreadStatus(true); //Set status to true therefore thread will last until staus is set to false
     vehicleThreads.at(i)->start();
     }
@@ -361,11 +360,13 @@ void ReportState::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
 void ReportState::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // display message that state is being changed to Setup, press the add road button again
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Moving to Setup state\n");
     setState(mWindow, new Setup());
 }
 void ReportState::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // message, Running simulation with same roards and cars
+    ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Moving to Simulation state\n");
     setState(mWindow, new Simulation());
 
 }

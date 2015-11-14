@@ -5,19 +5,19 @@
 #include <QGraphicsItem>
 #include "dispatcher.h"
 #include "contextobject.h"
-#include "increasespeedaggressive.h";
-#include "increasespeedlow.h";
-#include "increasespeedmedium.h";
-#include "decreasespeed.h";
-#include "overtakehigh.h";
-#include "overtakelow.h";
-#include "overtakemedium.h";
-
+#include "increasespeedaggressive.h"
+#include "increasespeedlow.h"
+#include "increasespeedmedium.h"
+#include "decreasespeed.h"
+#include "overtakehigh.h"
+#include "overtakelow.h"
+#include "overtakemedium.h"
+#include "StrategyContext.h"
 #include <vector>
 
 using namespace std;
 
-#include "StrategyContext.h";
+
 
 class trafficlights;
 
