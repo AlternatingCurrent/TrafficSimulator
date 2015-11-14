@@ -8,17 +8,6 @@ BabyPedestrianAdapter::BabyPedestrianAdapter(BabyPedestrian *aBaby)
 {
 
     theBaby = aBaby;
-/*
-    QPixmap watermark(":/baby.png");
-    QPixmap newPixmap = watermark.scaled(QSize(150,150),  Qt::KeepAspectRatio);
-    setPixmap(newPixmap);
-//    QTimer * move_timer = new QTimer(this);
-//    connect(move_timer, SIGNAL(timeout()),this,SLOT(move()));
-//    move_timer->start(50);
-//    maxRange=550;
-    setPos(820,250);
-   qDebug() <<"baby created";*/
-
 }
 
 BabyPedestrianAdapter::~BabyPedestrianAdapter()
