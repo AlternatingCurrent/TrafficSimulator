@@ -82,10 +82,6 @@ void RegularPedestrian::delay()
 
 void RegularPedestrian::move()
 {
-   int STEP_SIZE = 30;
-   double theta = rotation(); // degrees
-   double dy = STEP_SIZE * qSin(qDegreesToRadians(theta));
-   double dx = STEP_SIZE * qCos(qDegreesToRadians(theta));
    if(y()< maxRange ){
    setPos(x(), y()+speed);
   // qDebug()<< "Moving";
