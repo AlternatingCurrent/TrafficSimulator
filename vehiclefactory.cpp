@@ -119,14 +119,27 @@ Vehicle *VehicleFactory::createVehicle(QString type, string aggressiveness, int 
     else if(type == policecar){
 
          vehicle = new PoliceCar(subject,50,50,aggressive,xPosition,yPosition,direction);
+         if(direction == "west"){
+             vehicle= setup(vehicle,"policeLeft.png",xPosition,yPosition);
+         }
+           else{
          vehicle= setup(vehicle,"police.png",xPosition,yPosition);
+         }
+
+         vehicle->setPos(xPosition, yPosition);
          return vehicle;
 
     }
     else if(type == cartrailer){
 
         vehicle = new carwithtrailer(subject,50,50,aggressive,xPosition,yPosition,direction);
+        if(direction == "west"){
+            vehicle= setup(vehicle,"cartrailerLeft.png",xPosition,yPosition);
+        }
+          else{
         vehicle= setup(vehicle,"cartrailer.png",xPosition,yPosition);
+        }
+        vehicle->setPos(xPosition, yPosition);
         return vehicle;
     }
     else{
