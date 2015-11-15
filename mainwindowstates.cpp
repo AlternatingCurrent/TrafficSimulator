@@ -52,6 +52,8 @@ void Setup::addRoad(MainWindow &mWindow,Ui::MainWindow * ui)
     ui->reportBox->setText(ui->reportBox->document()->toPlainText() + "Road\n");
 }
 
+
+
 void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
 {
      int carx;
@@ -105,11 +107,6 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
       cary = 170;
       direction = "west";
       }
-
-
-
-
-
       //***************
 
        string aggressiveness;
@@ -134,33 +131,7 @@ void Setup::addVehicle(MainWindow &mWindow,Ui::MainWindow * ui)
        ui->reportBox->setText("You can only add maxium of four vehicles");
       }
 
-
-
-
-      //Can no longer set up the images and rectangles from Vehicle as the threads all cannot concurrently access
-      //the ui, only the main thread, and makes less sense to use emitting frtom vehcile over setyp in Mainwindw
-
-
-
-
-//      mWindow.setUpCarImages(car1);
-//      mWindow.setUpCarImages(car2);
-//      mWindow.setUpCarImages(car3);
-//      mWindow.setUpCarImages(car4);
-
-
-
-//      scene->addItem(car2);
-//      scene->addItem(car1);
-//      scene->addItem(car3);
-//      scene->addItem(car4);
-
-
-
-//      car3->setPos(1000, 400);
-//      car1->setPos(150,450);
-//      car2->setPos(0,450);
-//      car3->setPos(100,450);
+      //Sequential
 
 //      vehicles.push_back(car2);
 //      vehicles.push_back(car3);
@@ -173,11 +144,6 @@ void Setup::runSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 {
     // code to run simulation and change to simulation state
     std::cout<< "Running simulation " << std::endl;
-
-
-//    QTimer * timer = new QTimer();
-//    connect(timer,SIGNAL(timeout()),this,SLOT(trafficlightsCheck()));
-//    timer->start(500);
 
     QPixmap roadImage(":/Road.jpg");
         ui->Aggressiveness->setVisible(false);
@@ -250,13 +216,13 @@ void Simulation::stopSimulation(MainWindow &mWindow,Ui::MainWindow * ui)
 
     //Turn off all threads
     for(unsigned i =0; i< vehicles.size();i++){
-//        totalTimesCalled += vehicles.at(i)->timesCalled;
+//    totalTimesCalled += vehicles.at(i)->timesCalled;
         vehicles.at(i)->setThreadStatus(false);
     }
     // Interceptor code, should be moved to report::viewReport
     logger.updateTextFile();
 // Performance checking, comment out at release
-//    cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
+//  cout << "Total times vehicals have been called: " << totalTimesCalled << "\n";
     setState(mWindow, new ReportState());
 
 }

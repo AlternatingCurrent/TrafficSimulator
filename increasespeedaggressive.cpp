@@ -19,7 +19,6 @@ void IncreaseSpeedAggressive:: decision(vector<Vehicle*> vehicles,  Vehicle * cu
            if(currentVehicle->area->collidesWithItem(vehicles.at(i)->area) && (currentVehicle->pos().y() == vehicles.at(i)->pos().y()) &&(vehicles.at(i)->pos().x() > currentVehicle->pos().x())
               && (currentVehicle->pos() !=vehicles.at(i)->pos())){
                collidesWithItemInFront = true;
-
            }
 
        }

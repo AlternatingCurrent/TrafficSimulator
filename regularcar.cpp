@@ -93,25 +93,28 @@ void RegularCar::update(){ //Maybe only pass in vehicles that are in its scope
   }
   else{
   if(aggression ==  High){
-  StrategyContext * context = new StrategyContext(new IncreaseSpeedAggressive());
+  context = new StrategyContext(new IncreaseSpeedAggressive());
   context->executeStrategyDecision(this->vehicles, this);
   context = new StrategyContext(new DecreaseSpeed());
   context->executeStrategyDecision(this->vehicles, this);
+  if(this->direction== "east"){
   context = new StrategyContext(new OvertakeHigh());
   context->executeStrategyDecision(this->vehicles, this);
   }
+  }
 
     if(aggression == Medium){
-    StrategyContext * context = new StrategyContext(new IncreaseSpeedMedium());
+    context = new StrategyContext(new IncreaseSpeedMedium());
     context->executeStrategyDecision(this->vehicles, this);
     context = new StrategyContext(new DecreaseSpeed());
     context->executeStrategyDecision(this->vehicles, this);
+    if(this->direction== "east"){
     context = new StrategyContext(new OverTakeMedium());
-    context->executeStrategyDecision(this->vehicles, this);
+    context->executeStrategyDecision(this->vehicles, this);}
   }
 
   if(aggression == Low){
-    StrategyContext * context = new StrategyContext(new IncreaseSpeedLow());
+    context = new StrategyContext(new IncreaseSpeedLow());
     context->executeStrategyDecision(this->vehicles, this);
     context = new StrategyContext(new DecreaseSpeed());
     context->executeStrategyDecision(this->vehicles, this);

@@ -8,12 +8,6 @@
 #include <QThread>
 #include <QObject>
 
-//class MainWindowStates
-//{
-//public:
-//    MainWindowStates();
-//};
-
 class MainWindow;
 
 
