@@ -20,7 +20,7 @@ using namespace std;
 
 
 class trafficlights;
-
+class StrategyContext;
 class Subject; //Forward declare to use pointer of type Subject
 //Abstract class Vehcile provides the base information for all subtypes
 class Vehicle: public QObject, public QGraphicsPixmapItem{
@@ -95,6 +95,8 @@ public:
 
     //Keeps a track of how many times this vehicle's update method was called for performance montoring
     int timesCalled;
+
+    StrategyContext * context;
 
 signals:
     //Very important, since the main thread is the only one able to
